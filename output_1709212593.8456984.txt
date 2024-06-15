@@ -1,5 +1,0 @@
-GPT3 error: Invalid header value b'Bearer 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\n'
-
-GPT3 error: Invalid header value b'Bearer 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\n'
-
-GPT3 error: Invalid header value b'Bearer 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\n'
