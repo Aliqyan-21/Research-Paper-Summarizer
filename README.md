@@ -1,3 +1,3 @@
-# Recursive Summarizer
+## RPS
 
-Reseach paper summarizer
+Research paper summarizer
