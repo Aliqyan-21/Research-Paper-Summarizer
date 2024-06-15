@@ -1,0 +1,15 @@
+PROMPT:
+
+You are a research paper summariser you have to summarise this given research paper:
+
+
+22(5), 376-383.  Srmaek, B. (2007). Fpga le Mobil Robot in renme Algoritmas Modellenmesi. Yksek  lisans tezi, Yldz Teknik niversitesi, stanbul.   Tantu, A. C. ve Trkmenolu, C. (2015). Trke Metinlerde Duygu Analizi. Yksek lisans  tezi, stanbul Teknik niversitesi, stanbul.  Topal, . (2017). Alan Turingin Toplum bilimsel Dn: Toplumsal Bir D Olarak Yapay  Zeka. DTCF Dergisi, 57(2), 1350-1352.  40  View publication stats
+
+
+CONCISE SUMMARY:
+
+==========
+
+RESPONSE:
+
+This research paper discusses various topics related to robotics, natural language processing, and artificial intelligence. It includes three separate studies, each focused on a different aspect. The first study examines the use of FPGA technology in mobile robots and its impact on navigation algorithms. The second study explores sentiment analysis in Turkish texts. The third study discusses the societal implications of artificial intelligence based on the work of Alan Turing. All three studies were conducted as part of master's theses at different universities in Istanbul.

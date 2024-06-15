@@ -1,0 +1,3354 @@
+arXiv:math/0503504v2 [math.DS] 22 Feb 2007
+
+RealLife: the continuum limit of Larger Than
+Life cellular automata
+
+Marcus Pivato
+Department of Mathematics, Trent University
+1600 West Bank Drive, Peterborough, Ontario, Canada, K9J 7B8
+
+Abstract
+Let A := {0, 1}. A cellular automaton (CA) is a shift-commuting transformation
+D
+of AZ determined by a local rule. Likewise, a Euclidean automaton (EA) is a
+D
+shift-commuting transformation of AR determined by a local rule. Larger than
+Life (LtL) CA are long-range generalizations of J.H. Conway’s Game of Life CA,
+proposed by K.M. Evans. We prove a conjecture of Evans: as their radius grows to
+infinity, LtL CA converge to a ‘continuum limit’ EA, which we call RealLife. We also
+show that the life forms (fixed points, periodic orbits, and propagating structures)
+of LtL CA converge to life forms of RealLife. Finally we prove a number of existence
+results for fixed points of RealLife.
+MSC:
+Keywords:
+
+37B15 (primary), 68Q80 (secondary)
+Cellular automata, Game of Life, continuum limit.
+
+D
+
+Let A := {0, 1} and let D ∈ N. Let AZ be the set of all configurations —ie.
+functions a : ZD −→A. If K ⊂ ZD , then we define a|K ∈ AK to be the restriction of a to K. A D-dimensional cellular automaton (CA) is a transformation
+D
+D
+Φ : AZ −→AZ determined by a finite subset K ⊂ ZD (the neighbourhood)
+D
+and a local rule φ : AK −→A so that, for any a ∈ AZ , Φ(a) := b, where
+b(z) = φ(a|z+K ) for all z ∈ ZD .
+One of the most fascinating cellular automata is Conway’s Game of Life [BCG04],
+
+Email address: pivato@xaravve.trentu.ca (Marcus Pivato).
+
+Preprint submitted to Elsevier Science
+
+27 October 2018
+
+2
+
+2
+
+which is the function Υ : AZ −→AZ defined
+
+Υ(a)(z) :=
+
+Here, K(a)(z) :=
+
+
+
+
+
+1
+
+
+
+
+1
+
+
+
+
+
+0
+
+X
+
+k∈K
+
+if a(z) = 1 and K(a)(z) ∈ {3, 4};
+if a(z) = 0 and K(a)(z) = 3;
+otherwise.
+
+a(z + k), where K := [−1...1] × [−1...1].
+
+Larger than Life (LtL) is an infinite family of long-range, two-dimensional generalizations of Life, introduced by Evans [Eva96,Eva01,Eva03a,Eva03b,Eva05].
+An LtL CA has the form:
+
+Υ(a)(z) :=
+
+
+
+
+
+1
+
+
+
+
+1
+
+
+
+
+
+0
+
+if a(z) = 1 and s0 ≤ K(a)(z) ≤ s1 ;
+if a(z) = 0 and b0 ≤ K(a)(z) ≤ b1 ;
+otherwise.
+
+1 X
+a(z + k),
+|K| k∈K
+where K is some large ‘neighbourhood’ of the origin, usually K = [−K...K] ×
+[−K...K] (for some radius K > 0). More generally, we could define K(a)(z) :=
+P
+c a(z + k) for any set of nonnegative coefficients {ck }k∈K such that
+Pk∈K k
+c
+k∈K k = 1. We refer to [b0 , b1 ] as the birth interval and [s0 , s1 ] as the survival interval. In Conway’s Life, s0 = b0 = b1 = 31 , and s1 = 49 . Evans’ Larger
+than Life CA usually have
+
+Here 0 ≤ s0 ≤ b0 ≤ b1 ≤ s1 ≤ 1, and K(a)(z)
+
+:=
+
+0.2 ≤ s0 ≤ b0 ≤ 0.27 ≤ 0.3 ≤ b1 ≤ 0.35 ≤ s1 ≤ 0.5.
+Larger than Life CA exhibit phenomena qualitatively similar to those found
+in Life and its generalizations (see [Bay87,Bay88,Bay90,Bay91,Bay92,Bay94],
+[Epp02,Got03] and [GG98, §6]) including the emergence of complex, compactly
+supported fixed points (still lifes), periodic solutions (oscillators) and propagating structures called bugs (analogous to the gliders and space-ships of Life),
+which can sometimes be arranged to perform computation [Eva05]. Especially
+intriguing is that the still lifes, oscillators, and bugs found in longer-range LtL
+CA appear to be rescaled, ‘high resolution’ versions of those found in shorter
+range LtL CA (see Figure 1). Evans [Eva01] conjectures that these still lifes
+(resp. oscillators, bugs) converge to a continuum limit, which is a still life
+(resp. oscillator, bug) for some kind of Euclidean automaton; a translationally2
+equivariant transformation of AR .
+2
+
+K=25
+
+K=50
+
+K=75
+
+K=100
+
+Fig. 1. Four morphologically similar bugs for LtL CA of increasing radius. In all
+706
+958
+1216
+cases, s0 = b0 = 2601
+< b1 = 2601
+< s1 = 2601
+, and K = [−K...K]2 , where K = 25,
+50, 75, or 100.
+
+In §1, we formally define Euclidean automata (EA), and introduce the RealLife
+D
+family of EA, the natural generalization of Larger than Life to AR . We show
+that RealLife EA are continuous on a comeager set in the natural L1 norm on
+D
+AR (Theorems 1.1 and 1.2), and show that their dynamics vary continuously
+as a function of the parameters (s0 , b0 , b1 , s1 ) and the neighbourhood K (Theorems 1.3 and 1.4). In §2 we show that RealLife EA are the continuum limits
+of suitable sequences of Larger than Life CA of increasing radius, and that a
+suitable converging sequence of still lifes (resp. oscillators, bugs) for these LtL
+CA yields a still life (resp. oscillator, bug) for RealLife (Theorem 2.1). In §3,
+we construct several families of nontrivial still lifes for RealLife EA satisfying
+various conditions. Finally, in §4, we introduce the Hausdorff metric d∗ on
+D
+AR , and show that a still life is often surrounded by a d∗ -neighbourhood of
+other still lifes (Theorem 4.2).
+The four sections are mostly logically independent, except for the use of notation and definitions from §1. Also, the proof of Theorem 2.1 uses Theorem 1.1,
+Lemma 1.6 and Proposition 1.7, and the proof of Theorem 4.2 uses Proposition
+3.1.
+
+1
+
+Euclidean Automata and RealLife
+
+Let λ be the D-dimensional Lebesgue measure on RD , and let L∞ := L∞ (RD , λ).
+D
+Let A := {0, 1} and let AR ⊂ L∞ be the set of all Borel-measurable functions a : RD −→A, which we will refer to as configurations. If v ∈ RD , then
+D
+D
+define the shift map σ v : AR −→AR by σ v (a) = a′ , where a′ (x) = a(x + v)
+D
+D
+for all x ∈ RD . A Euclidean automaton (EA) is a function Φ : AR −→AR
+3
+
+which commutes with all shifts, and which is determined by local information,
+meaning that there is some compact neighbourhood K ⊂ RD around zero so
+D
+that, if a, a′ ∈ AR , and a|K = a′ |K , then Φ(a)(0) = Φ(a′ )(0).
+n
+
+Let K := κ ∈ L∞ (RD ; [0, ∞)) ; κ has compact support, and
+D
+
+R
+
+RD κ
+
+κ ∈ K and a ∈ AR , then the convolution of a by κ is defined:
+κ ∗ a(x)
+
+:=
+
+Z
+
+RD
+
+o
+
+= 1 . If
+
+κ(y) · a(x − y) dλ[y].
+
+For example, if K ⊂ RD is a compact neighbourhood of zero (eg. a ball or
+R
+a cube), and κ := λ[K]−1 11K , then κ ∈ K, and κ ∗ a(x) = λ[K]−1 K a(x −
+k) dλ[k] is the average value of a near x. If 0 < s0 ≤ b0 < b1 ≤ s1 ≤ 1, then
+D
+D
+,s1
+the corresponding RealLife Euclidean automaton Υ = κ Υbb01 ,s
+: AR −→AR is
+0
+defined:
+
+D
+
+∀ a ∈ AR ,
+
+Υ(a)(x)
+
+:=
+
+
+
+
+
+1
+
+
+
+
+1
+
+
+
+
+
+
+
+if a(x) = 1 and s0 ≤ κ ∗ a(x) ≤ s1 ;
+
+(1)
+
+if a(x) = 0 and b0 ≤ κ ∗ a(x) ≤ b1 ;
+
+0 otherwise.
+
+Let Θ := {(s0 , b0 , b1 , s1 ) ; 0 < s0 ≤ b0 < b1 ≤ s1 ≤ 1} be the set of threshold
+four-tuples. Note that Υ depends upon the choice of kernel κ ∈ K and the fourtuple (s0 , b0 , b1 , s1 ) ∈ Θ; we normally suppress this dependency in our notation.
+We call this Euclidean automaton RealLife because it is the continuum limit
+of a sequence of Larger than Life cellular automata with ‘birth interval’ [b0 , b1 ]
+and ‘survival interval’ [s0 , s1 ] (Theorem 2.1). If we define b := 11[b0 ,b1 ] and
+D
+s := 11[s0 ,s1] , then, for any a ∈ AR and x ∈ RD , we can rewrite eqn.(1) as
+Υ(a)(x)
+
+:=
+
+a(x) · s (κ ∗ a(x)) + (1 − a(x)) · b (κ ∗ a(x)) .
+
+(2)
+
+D
+
+The compact-open topology on AR is determined by the metric dC defined
+D
+for all a, a′ ∈ AR by
+′
+
+′
+
+′
+
+
+
+′
+
+
+
+dC (a, a ) := exp [−R(a, a )] , where R(a, a ) := sup r > 0 ; a B(r) ≡ a B(r) .
+n
+
+o
+
+(Here B(r) := x ∈ RD ; |x| ≤ r ). It is not hard to prove the analog of the
+Curtis-Hedlund-Lyndon Theorem [Hed69] that is well-known for cellular automata:
+4
+
+D
+
+Theorem: Let Φ: AR →AR
+dC -continuous. ✷
+
+D
+
+be σ-commuting. Then Φ is an EA iff Φ is
+
+The compact-open topology is very fine; dC (a, a′ ) will be large even if a and
+a′ differ on a set ∆ ⊂ RD of tiny measure, as long as ∆ contains points near
+the origin. Also, dC is not shift-invariant. Thus, sometimes it is more suitable
+D
+D
+to use the L1 metric. Let L1 := L1 (RD , λ) and let 1AR := AR ∩ L1 be the set
+D
+D
+of configurations whose support has finite measure. Note that Υ(1AR ) ⊆ 1AR
+(because 0 < b0 ). We extend Υ to a function Υ : L1 −→L1 by applying eqn.(2)
+D
+in the obvious way. For any a ∈ 1AR , let M(a) := λ [α−1 {s0 , b0 , s1 , b1 }], where
+α := κ ∗ a. We define
+0 RD
+
+A
+
+:=
+
+n
+
+o
+
+D
+
+a ∈ 1AR ; M(a) = 0 .
+
+D
+
+(Note that 0AR is a function of (s0 , b0 , s1 , b1 ) and κ). This section’s first main
+result is:
+Theorem 1.1 If (s0 , b0 , b1 , s1 ) ∈ Θ and κ ∈ K, then Υ is L1 -continuous on
+0 RD
+A .
+0 RD
+
+D
+
+is a strict subset of 1AR . To see this, suppose κ = 11K , where K =
+iD
+√
+−1 1
+,
+. Let r := D s0 and let A := [0, r]D , so λ[A] = s0 . If a := 11A , and
+2 2
+
+A
+
+h
+
+
+
+
+
+α := κ∗a, then α(x) = s0 for ∀ x ∈ [r − 1, 1]D . Thus, M(a) = λ [r − 1, 1]D =
+D
+
+(2 − r)D > 0, so a 6∈ 0AR .
+
+D
+
+Υ is not L1 -continuous on all of 1AR . To see this, note that Υ(a) = 11B ,
+where B := A if b0 > s0 , and B := [r − 1, 1]D ⊃ A if b0 = s0 . Now, let
+ǫ > 0 be tiny. Let r ′ := r − ǫ/D, let A′ := [0, r ′]D , and let a′ := 11A′ . Then
+ka − a′ k1 < ǫ. However, λ[A′ ] < s0 , so that Υ(a′ ) = o is the zero configuration.
+Thus, kΥ(a) − Υ(a′ )k1 = λ[B] ≥ s0 .
+D
+
+Fortunately, this discontinuity
+set is usuallyomeager in 1AR . If T ⊂ RD , and
+n
+D
+γ > 0, let B(T, γ) := x ∈ R ; d(x, T) < γ . Say T is thin if lim λ[B(T, γ)] =
+γ→0
+
+0. For example, any compact, piecewise smooth (D − 1)-submanifold of RD is
+thin. The kernel κ is almost continuous if there is a thin set T ⊂ RD so that,
+for any γ > 0, κ is uniformly continuous on B(T, γ)∁. For example:
+• If κ is continuous, then κ is almost continuous (κ has compact support, so
+continuity implies uniform continuity).
+• If K is an open set and ∂K is thin (eg. ∂K is a piecewise smooth manifold),
+then κ := λ[K]−1 11K is almost continuous.
+Theorem 1.2 For any (s0 , b0 , b1 , s1 ) ∈ Θ and any almost-continuous κ ∈ K,
+5
+
+D
+
+D
+
+the set 0AR is a σ-invariant dense Gδ subset of 1AR .
+Let Φ : L1 −→L1 be a σ-commuting transformation. If a ∈ L1 , then a is a still
+life for Φ if Φ(a) = a. If p ∈ N, then a is a p-oscillator if Φp (a) = a (a still life
+is thus a 1-oscillator). If p ∈ N and v ∈ RD , then a is a p-periodic bug with
+velocity v if Φp (a) = σ pv (a). We will refer to still lifes, oscillators, and bugs
+collectively as life forms.
+Recall that Υ is determined by the threshold parameter four-tuple (s0 , b0 , b1 , s1 )
+and the convolution kernel κ. A small change in these parameters should yield
+a small change in Υ, and a small change in its life forms. In particular, if κ is a
+fixed kernel, and {(sn0 , bn0 , bn1 , sn1 )}∞
+n=1 is a sequence of four-tuples converging to
+the four-tuple (s0 , b0 , b1 , s1 ), then the corresponding sequence {Υn }∞
+n=1 of RealLife EA (with kernel κ) should converge to the RealLife EA Υ determined
+by (s0 , b0 , b1 , s1 ) and κ. Likewise, if we fix (s0 , b0 , b1 , s1 ), then a convergent
+sequence {κn }∞
+n=1 ⊂ K of kernels should yield a convergent sequence of RealLife EA. Furthermore, in both cases, the life forms of {Υn }∞
+n=1 should ‘evolve’
+toward life forms for Υ.
+To formalize life form ‘evolution’, suppose {Φn }∞
+n=1 was a sequence of σ1
+1
+commuting transformations of L . If A ⊂ L is a σ-invariant subset, then
+∞
+1
+the sequence {Φn }∞
+n=1 evolves to Φ on A if, for any {an }n=1 ⊂ L such that
+L1−lim an = a ∈ A, the following holds:
+n→∞
+
+(a) If Φn (an ) = an for all n ∈ N, then Φ(a) = a.
+(b) Let P ∈ N, and suppose Φp (a) ∈ A for all p ∈ [0...P ).
+[i] If ΦPn (an ) = an for all n ∈ N, then ΦP (a) = a.
+D
+[ii] If {vn }∞
+lim vn = v ∈ RD , and ΦPn (an ) = σ P vn (an ) for all
+n=1 ⊂ R and n→∞
+n ∈ N, then ΦP (a) = σ P v (a).
+The other two main results of this section are:
+Theorem 1.3 Fix κ ∈ K. Let {(sn0 , bn0 , bn1 , sn1 )}∞
+lim (sn0 , bn0 , bn1 , sn1 ) =
+n=1 ⊂ Θ, with n→∞
+(s0 , b0 , b1 , s1 ). For each n ∈ N, let Υn : L1 −→L1 be the RealLife EA defined
+by (sn0 , bn0 , bn1 , sn1 ) and κ. Then
+D
+
+(a) L1−lim Υn (a) = Υ(a) for all a ∈ 0AR .
+(b)
+
+n→∞
+0 RD
+.
+{Υn }∞
+n=1 evolves to Υ on A
+
+1
+Theorem 1.4 Fix (s0 , b0 , b1 , s1 ) ∈ Θ. Let {κn }∞
+n=1 ⊂ K be such that L −
+lim κn = κ. For each n ∈ N, let Υn : L1 −→L1 be the RealLife EA defined by
+n→∞
+(s0 , b0 , b1 , s1 ) and κn . Then
+D
+
+(a) L1−lim Υn (a) = Υ(a) for all a ∈ 0AR .
+n→∞
+
+6
+
+D
+
+0 R
+(b) If sup kκn k∞ < ∞, then {Υn }∞
+.
+n=1 evolves to Υ on A
+n∈N
+
+Corollary 1.5 Fix (s0 , b0 , b1 , s1 ) ∈ Θ. Let K ⊂ RD and κ := λ[K]−1 11K .
+(a) Let {Kn ⊂ RD }∞
+lim λ[K△Kn ] = 0. For each n ∈ N,
+n=1 be such that n→∞
+1
+1
+let Υn : L → L be the RealLife EA defined by (s0 , b0 , b1 , s1 ) and κn :=
+D
+λ[Kn ]−1 11Kn . Then L1−lim Υn (a) = Υ(a) for all a ∈ 0AR , and {Υn }∞
+n=1
+0 RD
+
+n→∞
+
+evolves to Υ on A .
+(b) Let G ∈ K be smooth. For any n ∈ N, define Gn ∈ K by Gn (x) := nD ·
+G(nx), ∀ x ∈ RD , and then let Υn : L1 → L1 be the RealLife EA defined
+1
+by (s0 , b0 , b1 , s1 ) and κn := Gn ∗κ (a smooth kernel). Then L−
+lim Υn (a) =
+n→∞
+
+D
+
+D
+
+0 R
+Υ(a) for all a ∈ 0AR , and {Υn }∞
+.
+n=1 is evolves to Υ on A
+
+Proof: (a) Let K := inf λ[Kn ], and assume K > 0, so 1/K < ∞. Now,
+n∈N
+
+K ≤ λ[K], so kκn − κk1 < (1/K)λ[Kn △K] −−
+−
+−→
+− 0, so Theorem 1.4(a)
+n→∞
+0 RD
+yields pointwise convergence to Υ on A . Also, sup kκn k∞ = 1/K < ∞,
+n∈N
+
+so Theorem 1.4(b) yield evolution.
+(b) The sequence {Gn }∞
+n=1 ⊂ K is a convolutional approximation of identity [Fol84, Thm.8.14(a)], so L1−lim κn = κ, so Theorem 1.4(a) yields pointn→∞
+
+D
+
+wise convergence to Υ on 0AR . Also, kκn k∞ ≤ kκk∞ < ∞ by Young’s
+inequality [Fol84, Thm.8.7], so Theorem 1.4(b) yields evolution.
+✷
+
+To prove Theorems 1.1 to 1.4, we need some notation. For any δ > 0, we define
+Wδs := (s0 − δ, s0 + δ) ∪ (s1 − δ, s1 + δ)
+and Wδb := (b0 − δ, b0 + δ) ∪ (b1 − δ, b1 + δ).
+D
+
+If a ∈ AR and α := κ ∗ a, then we define Mas , Mab : (0, 1)−→R by
+h
+
+Mas (δ) := λ α−1 (Wδs )
+
+i
+
+and
+
+h
+
+i
+
+Mab (δ) := λ α−1 (Wδb ) ,
+
+for all δ > 0.
+
+Lemma 1.6 Let a, a′ ∈ L1 . Let α := κ ∗ a and α′ := κ ∗ a′ . Then:
+(a) kΥ(a) − Υ(a′ )k1 ≤ 2·ka − a′ k1 + ks ◦ α − s ◦ α′ k1 + kb ◦ α − b ◦ α′ k1 .
+(b) ks ◦ α′ − s ◦ αk1 ≤ Mas (kα′ − αk∞ ) and kb ◦ α′ − b ◦ αk1 ≤ Mab (kα′ − αk∞ ).
+(c) If K := kκk∞ , then kα′ − αk∞ ≤ K · ka − a′ k1 .
+(d) If M(a) = 0, then lim Mas (δ) = 0 = lim Mab (δ).
+δ→0
+
+δ→0
+
+Proof: (a) Eqn.(2) says Υ(a) = a · s ◦ α + (1 − a) · b ◦ α and Υ(a′ ) =
+a′ · s ◦ α′ + (1 − a′ ) · b ◦ α′ . Thus,
+Υ(a) − Υ(a′ ) = (a − a′ ) · s ◦ α + a′ · (s ◦ α − s ◦ α′ )
+7
+
++ (a′ − a) · b ◦ α + (1 − a′ ) · (b ◦ α − b ◦ α′ ) .
+∴ kΥ(a) − Υ(a′ )k1 ≤ ka − a′ k1 · ks ◦ αk∞ + ka′ k∞ · ks ◦ α − s ◦ α′ k1
++ ka′ − ak1 · kb ◦ αk∞ + k1 − a′ k∞ · kb ◦ α − b ◦ α′ k1 .
+2 · ka − a′ k1 + ks ◦ α − s ◦ α′ k1 + kb ◦ α − b ◦ α′ k1 ,
+(∗)
+where (∗) is because ksk∞ = kbk∞ = ka′ k∞ =n k1 − a′ k∞ = 1.
+o
+(b) ks ◦ α′ − s ◦ αk1 = λ[∆], where ∆ := x ∈ RD ; s ◦ α(x) 6= s ◦ α′ (x) .
+Let δ := kα′ − αk∞ ; then ∆ ⊆ α−1 (Wδs ), so λ[∆] ≤ λ [α−1 (Wδs )] = Mas (δ).
+The proof for Mab is analogous.
+(c) kα′ − αk∞ = kκ ∗ (a′ − a)k∞ ≤ kκk∞ · ka′ − ak1 , by Young’s
+inequality. 
+
+h
+i
+h
+i
+(d) lim Mas (δ) + Mab (δ) (∗) λ α−1 {s0 , s1 } +λ α−1 {b0 , b1 } = M(a) =
+δ→0
+
+T
+
+T
+
+0. To see (∗), note that {sh0 , s1 } = iδ>0 Wsδ , so α−1 {s0 , s1 } = δ>0 α−1 (Wsδ ),
+so λ [α−1 {s0 , s1 }] = lim λ α−1 (Wsδ ) = lim Mas (δ), by ‘continuity from above’
+δ→0
+
+δ→0
+
+for measures [Fol84, Thm.1.8(d)]. Likewise, λ [α−1 {b0 , b1 }] = lim Mab (δ).
+δ→0
+
+Proof of Theorem 1.1: Let a ∈ 0AR
+α := κ ∗ a and α′ := κ ∗ a′ , then
+
+D
+
+✷
+
+and a′ ∈ L1 , with ka − a′ k1 < δ. If
+
+kΥ(a) − Υ(a′ )k1 ≤ 2 · ka − a′ k1 + ks ◦ α − s ◦ α′ k1 + kb ◦ α − b ◦ α′ k1
+(∗)
+
+≤ 2δ + Mas (Kδ) + Mab (Kδ)
+(†)
+
+(where K := kκk∞ ).
+
+Here, (∗) is by Lemma 1.6(a), and (†) is by Lemma 1.6(b,c). But M(a) = 0,
+so Mas (Kδ) + Mab (Kδ)−−
+−→0,
+−− by Lemma 1.6(d).
+✷
+δ→0
+D
+
+Proof of Theorem 1.2: σ-invariant: Fix v ∈ RD . Let a ∈ 1AR . Let av := σ v (a).
+If α = κ ∗ a and αv = κ ∗ av , then αv = σ v (α). Thus, αv−1 {s0 , b0 , b1 , s1 } =
+σ v [α−1 {s0 , b0 , b1 , s1 }], so M(av ) = λ [αv−1 {s0 , b0 , b1 , s1 }] = λ [α−1 {s0 , b0 , b1 , s1 }] =
+D
+D
+M(a). Thus, a ∈ 0AR iff av ∈ 0AR .
+n
+o
+Dense Gδ: For any r ∈ [0, 1], and m ∈ N, let Cm (r) := α ∈ L∞ ; λ [α−1 {r}] ≥ m1 .
+Claim 1: Cm (r) is closed in L∞ .
+∞
+Proof: Let {αn }∞
+lim αn = α. We claim that
+n=1 ⊂ Cm (r), and let L −n→∞
+1
+−1
+λ [α {r}] ≥ m , hence α ∈ Cm (r). To see this, fix ǫ > 0, and let Uǫ :=
+(r − ǫ, r + ǫ). Find n ∈ N such that kαn − αk∞ < ǫ. Then for any x ∈ RD ,
+
+
+
+
+x ∈ αn−1 {r}
+
+⇐⇒
+
+
+
+
+
+
+
+αn (x) = r =⇒ α(x) ∈ (r − ǫ, r + ǫ)
+
+
+
+⇐⇒
+
+
+
+Hence, αn−1 {x} ⊂ α−1 (Uǫ ), which means that λ [α−1 (Uǫ )] ≥ λ [αn−1 {x}] ≥
+1/m.
+h
+i
+This holds for any ǫ > 0. Thus, λ [α−1 {x}] = lim λ α−1 (Uǫ ) ≥ 1/m.
+ǫց0
+✸ Claim 1
+8
+
+
+
+x ∈ α−1 (Uǫ ) .
+
+D
+
+Claim 1 implies that Om (r) := Cm (r)∁ is open in L∞ . Define K : 1AR ∋
+a 7→ (κ ∗ a) ∈ L∞ ; then K is continuous (by Lemma 1.6(c)), so Om (r) :=
+D
+K−1 [Om (r)] is open in 1AR .
+D
+It remains to show that Om (r) is L1 -dense in 1AR . To do this, let a ∈
+D
+Om (r)∁ ⊂ 1AR . hence, if α := κ ∗ a, then λ[α−1 {r}] ≥ 1/m. Let A := kak1
+and K := kκk∞ . We define constants L := 8(K + A) and J := (1 + 4LA/r).
+D
+
+Claim 2: For any ǫ > 0, there is some a′ ∈ 1AR such that ka − a′ k1 < J · ǫ
+and so that, if α′ := κ ∗ a′ , then (α′ )−1 {r} ⊆ α−1 (r + Lǫ, r + 3Lǫ).
+Proof: Assume ǫ < A. Suppose a = 11A for some measurable A ⊂ RD . Let
+C := C1 ⊔ C2 ⊔ · · · ⊔ CN be a finite disjoint union of open cubes such that
+λ[C△A] < ǫ [Fol84, Thm. 2.40(c), p.68]. Now, κ is almost continuous, so
+there is a thin set T ⊂ RD and γ > 0 so that λ[B(T, 2γ)] < ǫ and so that κ
+is uniformly continuous on Y := B(T, γ)∁.
+For any x, y ∈ RD and δ > 0, we’ll write “x f
+y” to mean |x−y| < δ. Find
+
+ δ
+
+
+′
+′
+κ(y)
+κ(y
+)
+y
+=⇒
+. Assume δ < γ. By
+δ so that, for any y, y ′ ∈ Y, y f
+f
+ǫ
+δ
+N
+subdividing the cubes {Cn }n=1 if necessary, we can assume all cubes have
+diameter less than δ.
+Fix x ∈ RD . Let Tx = x − T. By reordering {Cn }N
+n=1 if necessary, we can
+find some Mx < N such that, Cm ∩ B(Tx , γ) 6= ∅ for all m ∈ [1...Mx ], and
+F x
+Cn ∩ B(Tx , γ) = ∅ for all n ∈ (Mx ...N]. Thus, if we define Cx := M
+m=1 Cm ,
+then B(Tx , γ) ⊆ Cx .
+Claim 2.1: λ[Cx ] < ǫ for all x ∈ RD .
+Proof: If m ∈ [1...Mx ], then Cm ⊂ B(Tx , γ + δ) ⊂ B(Tx , 2γ). Here, (∗)
+(∗)
+
+(†)
+
+is because B(Tx , γ) ∩ Cm 6= 0 and diam [Cm ] < δ. (†) is because δ < γ.
+Thus, Cx ⊆ B(Tx , 2γ), so λ[Cx ] ≤ λ[B(Tx , 2γ)] < ǫ by definition of γ.
+This works for all x ∈ RD .
+▽ Claim 2.1
+For each n ∈ (Mx ...N], fix some cn ∈ Cn , and let kn := κ(x − cn ).
+Claim 2.2: For any n ∈ (Mx ...N] and every c ∈ Cn , κ(x − c) f
+k .
+ǫ n
+Proof: c 6∈ B(Tx , γ), so (x − c) 6∈ B(T, γ), so (x − c) ∈ Y. Likewise,
+(x − cn ), so κ(x − c) f
+k ,
+(x − cn ) ∈ Y. If c ∈ Cn , then c f
+c , so (x − c) f
+δ n
+δ
+ǫ n
+by definition of δ.
+✸ Claim 2
+Claim 2.3:
+
+κ ∗ a(x) ]
+Lǫ/4
+
+N
+X
+
+kn λ[Cn ].
+
+n=Mx +1
+
+Proof: Claim 2.2 implies that, for any n ∈ (Mx ...N],
+Z
+Cn
+
+Thus,
+
+κ(x − c) dc − kn · λ[Cn ]
+
+N
+X
+
+Z
+
+n=Mx +1C
+
+n
+
+κ(x − c) dc −
+
+≤
+
+ǫ · λ[Cn ].
+
+N
+X
+
+kn λ[Cn ]
+
+n=Mx +1
+
+9
+
+≤ǫ ·
+
+N
+X
+
+≤
+
+λ[Cn ]
+
+n=Mx +1
+
+ǫ · λ[C]
+
+≤
+
+(∗)
+
+≤
+
+ǫ · (A + ǫ)
+
+2Aǫ.
+
+(3)
+
+(†)
+
+Here, (∗) is because λ[A△C] < ǫ, and (†) is because ǫ < A. Thus, if
+K := kκk∞ , then
+κ ∗ a(x)
+
+=
+
+RD
+
+N Z
+X
+
+=
+
+n=1C
+n
+(†)
+
+g
+2Aǫ
+
+Z
+Cx
+
+Z
+
+κ(x − y) · a(y) dy
+
+κ(x − c) dc
+
+κ(x − c) dc +
+
+Mx Z
+X
+
+=
+
+m=1C
+m
+N
+X
+
+=
+
+Z
+
+A
+
+κ(x − y) dy
+
+κ(x − c) dc +
+
+kn λ[Cn ]
+
+n=Mx +1
+
+(‡)
+
+g
+Kǫ
+
+(∗)
+
+g
+Kǫ
+
+Z
+
+N
+X
+
+n=Mx +1C
+
+N
+X
+
+Z
+
+C
+
+κ(x − c) dc
+
+κ(x − c) dc
+
+n
+
+kn λ[Cn ].
+
+n=Mx +1
+
+Here, (∗) is because λ[A△C] < ǫ, (†) is by eqn.(3), and (‡) is by Claim
+2.1. The claim follows because Kǫ + 2Aǫ + Kǫ = 2(K + A)ǫ = Lǫ/4
+[because L := 8(K + A)].
+▽ Claim 2.3
+If ǫ is small enough, then 2Lǫ/r < 1. Thus if β := (1 + 2Lǫ/r)−1 , then
+1
+< β <√1. For each n ∈ [1...N], let C′n be the cube obtained by multiplying
+2
+Cn by D β but keeping the centre the same. Hence λ[C′n ] = β · λ[Cn ]. Let
+F
+′
+′
+A′ := N
+n=1 Cn and let a := 11C′ . Then
+ka − a′ k1 =
+≤
+
+λ[A△A′ ] ≤ λ[A△C] + λ[C△A′ ]
+ǫ + (1 − β) · λ[C] ≤ (1 + 4LA/r)ǫ = Jǫ.
+(∗)
+
+Here, (∗) is because λ[C] < 2λ[A] = 2A, and 1 − β = 1 −
+
+1
+=
+1 + 2Lǫ/r
+
+2Lǫ/r
+< 2Lǫ/r.
+1 + 2Lǫ/r
+Claim 2.4: Let α := κ ∗ a and α′ := κ ∗ a′ . Then kα′ − β · αk∞ < Lǫ/2.
+Proof: For each x ∈ RD , Claim 2.3 yields some suitable reordering of
+{Cn }N
+n=1 and some suitable Mx ∈ [1...N] such that
+α′ (x) = κ ∗ a′ (x)
+(†)
+
+]
+β Lǫ
+4
+
+(∗)
+Lǫ
+g
+4
+
+N
+X
+
+kn λ[C′n ] = β
+
+n=Mx +1
+
+N
+X
+
+kn λ[Cn ]
+
+n=Mx +1
+
+βk ∗ a(x) = β · α(x).
+
+Here, (†) is by Claim 2.3, and (∗) is by an argument identical to Claim
++ β Lǫ
+< Lǫ/2.
+2.3. Thus, for all x ∈ RD , we have |α′(x) − β · α(x)| < Lǫ
+4
+4
+The claim follows.
+▽ Claim 2.4
+Let r ′ := r/β = r(1 + 2Lǫ/r) = r + 2Lǫ. Then
+(α′ )−1 {r} ⊂ α−1 (r ′ − Lǫ, r ′ + Lǫ)
+(∗)
+
+10
+
+(†)
+
+α−1 (r + Lǫ, r + 3Lǫ).
+
+Here, (†) is because r ′ − Lǫ = r + 2Lǫ − Lǫ = r − Lǫ, and r ′ +Lǫ =
+
+r + 3Lǫ. (∗) is because
+
+
+α(x) g
+Lǫ r/β = r
+
+
+′
+
+
+
+
+
+
+
+x ∈ (α′ )−1 {r} =⇒
+
+
+(♯)
+
+′
+βα(x) g
+Lǫ α (x) = r
+
+=⇒
+
+2
+
+r ′ , where (♯) is by Claim 2.4, and (♭) is
+⇒ α(x) g
+Lǫ
+because Lǫ/2β < Lǫ because β > 1/2.
+✸ Claim 2
+D
+1
+Claim 3: For any r ∈ [0, 1], and any m ∈ N, Om (r) is L -dense in 1AR .
+D
+Proof: Let a ∈ Om (r)∁ ⊂ 1AR . Fix ǫ > 0; we want some a′ ∈ Om (r) with
+ka − a′ k1 < ǫ.
+Let L and J be the constants defined prior to Claim 2. For each n ∈ N,
+let ǫn := ǫ/(L4n ), and apply Claim 2 to obtain a sequence {an }∞
+n=1 such
+n
+that kan − ak1 < Jǫn = Jǫ/(L4
+),
+and
+so
+that,
+if
+α
+:=
+κ
+∗
+a
+n
+n , then
+
+1
+3
+−1
+−1
+αn {r} ⊂ α r + 4n ǫ, r + 4n ǫ .
+2β
+
+(♭)
+
+Claim 3.1: There are infinitely many n ∈ N such that an ∈ Om (r).
+Proof: Suppose not. Then there
+is some N ∈ N soithat λ[αn−1 {r}] ≥ m1 for
+h
+all n ≥ N. This means that λ α−1 r + 4ǫn , r + 43ǫn ≥ m1 . But the sequence
+of open intervals
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+3ǫ
+3ǫ
+, r + 64ǫ , r + 64
+, . . . , r + 4ǫn , r + 43ǫn , . . .
+r + 4ǫ , r + 3ǫ4 , r + 16ǫ , r + 16
+
+are disjoint. Hence, the sequence of subsets
+
+
+
+
+α−1 r + 4ǫ , r + 3ǫ4 ,
+
+
+
+
+
+3ǫ
+α−1 r + 16ǫ , r + 16
+,
+
+
+
+
+
+3ǫ
+α−1 r + 64ǫ , r + 64
+, ...,
+
+of also disjoint. All of these are subsets of α−1 (r, r + ǫ), which means that
+h
+
+λ α−1 (r, r + ǫ)
+
+i
+
+≥
+(∗)
+
+∞
+X
+
+n=N
+
+h
+
+
+
+λ α−1 r + 4ǫn , r + 43ǫn
+
+i
+
+≥
+
+∞
+X
+
+1
+n=N m
+
+= ∞.
+
+(†)
+
+But λ [α−1 (r, r + ǫ)] ≤ 1r kαk1 ≤ 1r kκk∞ · kak1 = K · A/r, which is finite.
+Contradiction. Here, (∗) is Chebyshev’s inequality [Fol84, Thm.6.17], and
+(†) is Young’s inequality.
+▽ Claim 3.1
+Let an ∈ Om (r) be as in Claim 3.1, with n large enough that J/L4n < 1.
+Thus, an f
+a. Since ǫ was arbitrary, we conclude that a is a cluster point of
+ǫ
+Om (r). Since a ∈ Om (r)∁ was arbitrary, we conclude that Om (r) must be
+D
+dense in 1AR .
+✸ Claim 3
+For any m ∈ N, Claim 3 means that Om := Om (s0 )∩Om (b0 )∩Om (b1 )∩Om (s1 )
+T
+D
+D
+is open and dense in 1AR . Thus, 0AR = ∞
+✷
+m=1 Om is dense Gδ.
+Remark: Note that the proofs of shift-invariance and ‘Gδ’ in Theorem 1.2 do
+not depend on the almost-continuity of κ.
+♦
+Now we’ll prove Theorems 1.3 and 1.4. Let {Φn : L1 −→L1 }∞
+n=1 be a family
+of transformations of L1 . If a ∈ L1 , then {Φn }∞
+is
+eventually
+equicontinuous
+n=1
+(EE) at a if, for any γ > 0, there is some δ > 0 and some N ∈ N so that,
+11
+
+for any a′ ∈ L1 , if a′ f
+a, then for all n ≥ N, Φn (a′ ) f
+Φn (a). The sequence
+δ
+γ
+∞
+{Φn }n=1 is equicontinuous if it is EE, and we can further hold N := 1 for all
+γ > 0.
+Proposition 1.7 Let Φ : L1 −→L1 and {Φn : L1 −→L1 }∞
+n=1 be a sequence of
+operators, and let A ⊂ L1 be a σ-invariant subset. Suppose {Φn }∞
+n=1 is EE
+∞
+at all points in A, and that {Φn }n=1 converges to Φ pointwise on A. Then
+{Φn }∞
+n=1 evolves to Φ on A.
+1
+Proof: Let a ∈ A; then lim Φn (a) = Φ(a). Let {an }∞
+n=1 ⊂ L be such that
+n→∞
+lim an = a. We will verify parts (a) and (b) in the definition of ‘evolution’.
+n→∞
+(a) Suppose Φn (an ) = an for all n ∈ N. We claim that Φ(a) = a.
+To see this, fix γ > 0. By eventual equicontinuity, find δ > 0 and N ∈ N so
+that, if ka − a′ k1 < δ, then kΦn (a) − Φn (a′ )k1 < γ3 for all n ≥ N. Assume
+that δ < γ3 . If n ≥ N is large enough, then ka − an k1 < δ < γ3 , and also
+kΦ(a) − Φn (a)k1 < γ3 . Thus,
+
+kΦ(a) − ak1 ≤ kΦ(a) − Φn (a)k1 + kΦn (a) − Φn (an )k1 + kΦn (an ) − ak1
+γ
+2γ
+γ
++
++ kan − ak1 ≤
++ δ ≤ γ.
+≤
+3
+3
+3
+Since γ is arbitrary, we conclude that Φ(a) = a.
+(b) [i] is simply a special case of [ii] with v := 0, so we will prove [ii]. Let
+a ∈ A, and suppose, for each p ∈ [0...P ], that Φp (a) ∈ A. Define Ψ := σ −v ◦Φ.
+For all p ∈ [0...P ], let ap := Ψp (a) = σ −pv ◦ Φp (a). Then ap ∈ A, because A
+is σ-invariant.
+For all n ∈ N, let Ψn := σ −vn ◦ Φn . Thus, for any p ∈ [0...P ], Ψpn =
+−pvn
+σ
+◦ Φpn . Suppose that ΦPn (an ) = σ P vn (an ) for all n ∈ N [or equivalently,
+that ΨPn (an ) = an ]. We claim that ΦP (a) = σ P v (a) [or equivalently, that
+ΨP (a) = a].
+Claim 1: For all q ∈ [0...P ], the sequence {Ψn }∞
+n=1 is eventually equiconq
+tinuous at a .
+q
+q
+∞
+q
+Proof: {Φn }∞
+n=1 is EE at a because a ∈ A. Thus {Ψn }n=1 is EE at a ,
+because Ψn = σ −vn ◦ Φn , and the L1 metric is σ-invariant.
+✸ Claim 1
+p
+p
+p
+Claim 2: For all p ∈ [1...P ], lim Ψn (a) = Ψ (a) = a .
+n→∞
+Proof (by induction on p): For all q ∈ [0...P ), aq ∈ A, so n→∞
+lim Φn (aq ) = Φ(aq ).
+Thus,
+lim Ψn (aq ) = lim σ −vn ◦ Φn (aq ) (∗)
+
+n→∞
+
+n→∞
+−v
+
+=σ
+
+◦ Φ(aq ) = aq+1 .
+
+lim σ −vn ◦ Φ(aq )
+
+n→∞
+
+(4)
+
+Here, (∗) is because limn→∞ Φn (aq ) = Φ(aq ), and the L1 metric is σinvariant. To obtain the base case p = 1, set q := 0 in eqn.(4).
+Now, let q ∈ [1...P ), and suppose the claim is true for q. Let p := q + 1.
+12
+
+Then
+lim Ψpn (a)
+
+=
+
+n→∞
+
+lim Ψn ◦ Ψqn (a)
+
+n→∞
+
+lim Ψn (aq )
+
+(∗)
+
+n→∞
+
+aq+1 = ap .
+
+(†)
+
+Here, (∗) is because lim Ψqn (a) = aq by induction, and because {Ψn }∞
+n=1 is
+n→∞
+q
+EE at a by Claim 1. (†) is by eqn.(4).
+✸ Claim 2
+Claim 3: For all p ∈ [1...P ], The sequence {Ψpn }∞
+n=1 is eventually equicontinuous at a.
+Proof (by induction on p): The base case is Claim 1. Let q ∈ [0...P ), and
+suppose {Ψqn }∞
+n=1 is EE at a. Let p := q + 1. Fix γ > 0. Claim 1 yields δ1 > 0
+and N0 ∈ N such that:
+For all n ≥ N0 ,
+
+
+
+
+
+
+
+
+
+Ψn (aq ) .
+a′ g
+aq =⇒ Ψn (a′ ) g
+γ /3
+2δ1
+
+(5)
+
+Claim 2 says lim Ψpn (a) = ap and lim Ψqn (a) = aq . The same argument can
+n→∞
+
+n→∞
+
+be adapted to show lim Ψn (aq ) = Ψ(aq ) = aq+1 = ap . Thus, find N1 ≥ N0
+n→∞
+so that, for all n ≥ N1 ,
+(a) Ψpn (a) g
+ap ,
+γ /3
+
+(b) Ψqn (a) g
+aq
+δ
+1
+
+and
+
+(c) Ψn (aq ) g
+ap
+γ /3
+
+(6)
+
+By induction, {Ψqn }∞
+n=1 is EE at a, so find δ > 0 and N ≥ N1 such that,
+
+For all n ≥ N,
+
+
+
+
+
+
+a′ f
+a
+δ
+
+⇒
+(EE)
+
+=⇒ Ψpn (a′ ) = Ψn (Ψqn (a′ ))
+
+
+
+
+Ψpn (a) .
+=⇒ Ψpn (a′ ) f
+γ
+
+
+
+(∗)
+
+g
+γ /3
+
+Ψqn (a′ ) g
+Ψqn (a)
+δ
+1
+
+Ψn (aq )
+
+
+
+(†)
+
+g
+γ /3
+
+⇒
+(⋄)
+ap
+
+
+
+Ψqn (a′ ) g
+aq
+2δ
+
+(‡)
+
+g
+γ /3
+
+1
+
+Ψpn (a)
+
+
+
+
+
+Here, (⋄) is by eqn.(6b), (∗) is by eqn.(5), (†) is by eqn.(6c), and (‡) is by
+eqn.(6a). Thus, {Ψpn }∞
+✸ Claim 3
+n=1 is EE.
+P ∞
+Set p := P in Claim 3 to conclude {Ψn }n=1 is EE at a. Set p := P in Claim
+2 to get lim ΨPn (a) = ΨP (a). By hypothesis, ΨPn (an ) = an for all n ∈ N.
+n→∞
+P
+Now apply part (a) to the sequence {ΨPn }∞
+n=1 to conclude Ψ (a) = a; hence
+P
+Pv
+Φ (a) = σ (a), as desired.
+✷
+Remarks: Proposition 1.7 doesn’t need the functions {Φn }∞
+n=1 to be continuous
+anywhere except at a, nor to converge to Φ anywhere except at a. Also, L1
+could be replaced with any space L of functions on RD equipped with a σinvariant metric d such that lim d(σ v (a), a) = 0 for any a ∈ L.
+v→0
+
+D
+
+Proof of Theorem 1.4: (a) Fix a ∈ 0AR . Let α = κ ∗ a, and for all n ∈ N,
+let αn := κn ∗ a. Eqn.(2) says Υ(a) = a · s ◦ α + (1 − a) · b ◦ α and
+Υn (a) = a · s ◦ αn + (1 − a) · b ◦ αn .
+Thus,
+
+Υn (a) − Υ(a) = a · (s ◦ αn − s ◦ α) + (1 − a) · (b ◦ αn − b ◦ α) ,
+13
+
+so kΥn (a) − Υ(a)k1 ≤ kak∞ · ks ◦ αn − s ◦ αk1 + k1 − ak∞ · kb ◦ αn − b ◦ αk1
+≤ ks ◦ αn − s ◦ αk1 + kb ◦ αn − b ◦ αk1
+≤ Mas (kαn − αk∞ ) + Mab (kαn − αk∞ ) ,
+(∗)
+
+where (∗) is by Lemma 1.6(b). But
+kαn − αk∞ = k(κn − κ) ∗ ak∞ ≤ kκn − κk1 · kak∞ = kκn − κk1 −−
+−
+−→
+− 0.
+n→∞
+(∗)
+
+(∗) is by Young’s inequality. Thus, kΥn (a) − Υ(a)k1 −−
+−
+−→
+− 0, by Lemma
+n→∞
+1.6(d).
+D
+(b) The set 0AR is σ-invariant. Given part (a) together with Proposition
+1
+0 RD
+1.7, it suffices to show that {Υn }∞
+.
+n=1 is L -equicontinuous at every a ∈ A
+To see this, fix ǫ > 0. Let K := sup kκn k∞ . Let a′ ∈ L1 , with ka − a′ k1 < δ.
+n∈N
+
+Then Lemma 1.6(a,b,c) implies that:
+∀ n ∈ N,
+
+kΥn (a) − Υn (a′ )k1
+
+≤
+
+2δ + Mas (Kδ) + Mab (Kδ).
+
+(7)
+
+Now, M(a) = 0, so Lemma 1.6(d) yields some δ such that Mas (Kδ) +
+Mab (Kδ) < ǫ/2. Assume δ < ǫ/4. Then eqn.(7) says that kΥn (a) − Υn (a′ )k1 <
+ǫ for all n ∈ N.
+✷
+D
+
+Proof of Theorem 1.3: (a) Fix a ∈ 0AR . Let α = κ ∗ a. For all n ∈ N, let
+sn := 11[sn ,sn] and bn := 11[bn ,bn ] . Then Υ(a) = a · s ◦ α + (1 − a) · b ◦ α and
+0 1
+0 1
+Υn (a) = a · sn ◦ α + (1 − a) · bn ◦ α. Thus,
+kΥn (a) − Υ(a)k1 = ka · (sn ◦ α − s ◦ α) + (1 − a) · (bn ◦ α − b ◦ α)k1
+≤ kak∞ · ksn ◦ α − s ◦ αk1 + k1 − ak∞ · kbn ◦ α − b ◦ αk1
+≤ ksn ◦ α − s ◦ αk1 + kbn ◦ α − b ◦ αk1
+= ks′n ◦ αk1 + kb′n ◦ αk1 ,
+(8)
+where s′n := |s − sn | and b′n := |b − bn |.
+For any δ > 0, let Wδs and Wδb be as prior to Lemma 1.6. If ∆sn :=
+[s0 , s1 ]△[sn0 , sn1 ], then s′n = 11∆sn . If n is big enough, then |sn0 − s0 | < δ and
+|sn1 − s1 | < δ, so ∆sn ⊂ Wδs . Thus,
+ks′n ◦ αk1
+
+=
+
+h
+
+λ α−1 (∆sn )
+
+i
+
+≤
+
+h
+
+λ α−1 (Wδs )
+
+i
+
+=
+
+Mas (δ).
+
+(9)
+
+Likewise, if ∆bn := [b0 , b1 ]△[bn0 , bn1 ], then b′n = 11∆bn . If n is big enough, then
+|bn0 − b0 | < δ and |bn1 − b1 | < δ, so ∆bn ⊂ Wδb . Thus,
+kb′n ◦ αk1
+
+=
+
+h
+
+i
+
+=
+
+−→
+−−
+Mas (δ) + Mab (δ) −−
+δ→0
+
+0,
+
+λ α−1 (∆bn )
+
+i
+
+≤
+
+h
+
+λ α−1 (Wδb )
+
+Combining equations (8) to (10), we get
+kΥn (a) − Υ(a)k1
+
+≤
+
+14
+
+Mab (δ).
+
+(10)
+
+D
+
+because M(a) = 0, because a ∈ 0AR by hypothesis.
+D
+(b) The set 0AR is σ-invariant. Given part (a) together with Proposition
+1
+1.7, it suffices to show that {Υn }∞
+n=1 is eventually L -equicontinuous at every
+D
+a ∈ 0AR .
+D
+To do this, fix a ∈ 0AR , and ǫ > 0. We want δ > 0 and N ∈ N so that, if
+D
+a′ ∈ 1AR and ka − a′ k1 < δ, then kΥn (a) − Υ(a′ )k1 < ǫ for all n ≥ N.
+Let K := kκk∞ . Define measure µa on R by µa [U] := λ [α−1 (U)] for any
+measurable subset U ⊂ R. For any n ∈ N, and any δ > 0, let n Mas (δ) :=
+µa [hn Wδs ],i where n Wδs := (sn0 − δ, sn0 + δ) ∪ (sn1 − δ, sn1 + δ), and let n Mab (δ) :=
+µa n Wδb , where n Wδb := (bn0 − δ, bn0 + δ) ∪ (bn1 − δ, bn1 + δ). If ka − a′ k1 < δ,
+then Lemma 1.6(a,b,c) says
+∀ n ∈ N,
+
+kΥn (a) − Υn (a′ )k1
+
+≤
+
+2δ + n Mas (Kδ) + n Mab (Kδ).
+
+(11)
+
+For any δ > 0, let Mas (δ) := µa [Wδs ] and Mab (δ) := µa [Wδb ]. Lemma 1.6(d)
+says lim Mas (δ) = 0, so if δ is small enough, then Mas (2Kδ) < ǫ/4. Find
+δ→0
+
+N0 ∈ N so that, for all n ≥ N0 , |sn0 − s0 | < Kδ and |sn1 − s1 | < Kδ. Then
+n
+s
+s
+WKδ
+⊂ W2Kδ
+, so:
+∀ n ≥ N0 ,
+
+n
+
+s
+s
+Mas (Kδ) = µa [n WKδ
+] ≤ µa [W2Kδ
+] = Mas (2Kδ) < ǫ/4.
+
+(12)
+
+Likewise, Lemma 1.6(d) says that if δ is small enough, then Mab (2Kδ) < ǫ/4.
+If N1 is big enough, then for all n ≥ N1 , |bn0 − b0 | < Kδ and |bn1 − b1 | < Kδ,
+b
+b
+, so:
+⊂ W2Kδ
+so n WKδ
+∀ n ≥ N1 ,
+
+n
+
+b
+b
+Mab (Kδ) = µa [n WKδ
+] ≤ µa [W2Kδ
+] = Mab (2Kδ) < ǫ/4.
+
+Let N := max{N0 , N1 }. Thus, combining equations (11) to (13), we get:
+For all n ≥ N,
+
+kΥn (a) − Υn (a′ )k1
+
+<
+
+2δ + ǫ/4 + ǫ/4
+
+=
+
+2δ + ǫ/2
+
+Assume δ < ǫ/4. If ka − a′ k1 < δ, then kΥn (a) − Υn (a′ )k1 < ǫ for all n ≥ N.
+✷
+
+2
+
+From Larger Than Life to RealLife
+
+In what sense is a RealLife EA the ‘continuum limit’ of a sequence of Larger
+than Life CA? We’ll construct a ‘discrete approximation’ Υǫ of Υ (for any ǫ >
+0), which is isomorphic to an LtL CA with radius of order O(1/ǫ) (Proposition
+2.4). We will then prove:
+Theorem 2.1 Fix (s0 , b0 , s1 , b1 ) ∈ Θ and κ ∈ K. Let Υ be the resulting Real15
+
+(13)
+
+Life EA.
+D
+
+(a) If a ∈ 0AR , then L1−lim Υǫ (a) = Υ(a).
+ǫ→0
+
+D
+
+0 R
+.
+(b) If lim ǫn = 0, then {Υǫn }∞
+n=1 evolves to Υ on A
+n→∞
+
+Remarks: (a) It is clearly impossible to exactly simulate a RealLife EA on a
+digital computer; the best we can do is simulate a large-radius Larger than
+Life CA. Theorem 2.1(a) guarantees this is will yield a ‘good approximation’
+of RealLife.
+(b) Evans [Eva03a] has found that LtL CA of increasingly large radii have
+life forms which are virtually identical after rescaling [see Figure 1]. This,
+combined with Theorem 2.1(b), provides compelling evidence (but not proof)
+that RealLife EA have life forms which are morphologically similar to those
+seen in large-scale LtL CA.
+♦
+n
+
+o
+
+To start, fix ǫ > 0, and let ǫZD := ǫz ; z ∈ ZD . Let Bǫ be the sigma
+algebra generated by all D-dimensional half-open
+cubes of sidelength
+ǫ, with
+o
+n
+centres in ǫZD . That is, Bǫ is generated by C(z, ǫ) ; z ∈ ZD , where, for any
+z ∈ ZD , C(z, ǫ) := ǫz +
+
+h
+
+−ǫ ǫ
+,
+2 2
+
+D
+
+is the half-open cube of sidelength ǫ, centred
+
+D
+D
+at ǫz. If L1ǫ := L1 (RD , Bǫ , λ), then L1ǫ ⊂ L1 ∩ L∞ . Let ǫAR := 1AR ∩ L1ǫ . Let
+e ∈ ℓ1 by a
+ez := a(ǫz) for all z ∈ ZD .
+ℓ1 := ℓ1 (ZD ). For any a ∈ L1ǫ , we define a
+
+Thus, a(c) = aez , for all c ∈ C(z, ǫ). It follows:
+Lemma 2.2 For any a ∈ L1ǫ ,
+
+e k∞ ,
+(a) kak∞ = ka
+
+Thus,
+
+and
+
+(b) kak1 = ǫD · kae k1 .
+
+(c) The map L1ǫ ∋ a 7→ ae ∈ ℓ1 is a Banach space isomorphism.
+D
+D
+(d) Let 1AZ := AZ ∩ ℓ1 be the set of ZD -indexed configurations with finite
+D
+D
+support. Then ǫAR ∋ a 7→ ae ∈ 1AZ is bijection. ✷
+
+Let M(ǫZD ) be the Banach space of signed measures on ǫZDX
+. For any z ∈ ZD ,
+kz δǫz , for some
+let δǫz be the point mass at ǫz. If κ ∈ M(ǫZD ), then κ =
+z∈ZD
+
+κ̃ := [kz ]z∈ZD ∈ ℓ1 . This defines a Banach isomorphism M(ǫZD ) ∋ κ 7→ κ̃ ∈ ℓ1 .
+It is easy to show:
+Lemma 2.3 If κ ∈ M(ǫZD ) and a ∈ L1ǫ , then:
+e. ✷
+(b) κ]
+∗ a = κ̃ ∗ a
+16
+
+(a) κ ∗ a ∈ L1ǫ ,
+
+and
+
+If κ ∈ K, we define κ̄ǫ ∈ M(ǫZD ) by
+κ̄ǫ :=
+
+X
+
+kz δǫz , where kz :=
+
+z∈ZD
+
+Z
+
+C(z,ǫ)
+
+κ(c) dλ[c], for any z ∈ ZD .
+
+(14)
+
+f̄ǫ = [kz ]z∈ZD ∈ ℓ1 ⊂ ℓ∞ (ZD ). It is easy to check that
+We then define κ̃ǫ := κ
+
+(A) kκ̃ǫ k1 =
+and
+
+X
+
+kz =
+
+z∈ZD
+
+Z
+
+κ = 1,
+(15)
+
+RD
+
+D
+
+(B) kκ̃ǫ k∞ ≤ ǫ · kκk∞ .
+
+If a is Bǫ -measurable, then Lemma 2.3(a) says α := κ̄ǫ ∗a is also Bǫ -measurable,
+so s ◦ α and b ◦ α are also Bǫ -measurable. Thus, we can define Ῡǫ : L1ǫ −→L1ǫ
+by
+Ῡǫ (a)
+
+:=
+
+∀a ∈ L1ǫ .
+
+a · s ◦ (κ̄ǫ ∗ a) + (1 − a) · b ◦ (κ̄ǫ ∗ a),
+D
+
+(16)
+
+D
+
+D
+
+Note that Ῡǫ (ǫAR ) ⊆ ǫAR so Ῡǫ restricts to a transformation on ǫAR .
+Let Eǫ : L1 −→L1ǫ be the conditional expectation operator for the sigmaalgebra Bǫ . That is:
+For any a ∈ L1 and x ∈ RD ,
+
+Eǫ [a](x)
+
+:=
+
+1 Z
+a(c) dλ[c],
+ǫD
+C
+
+where C ∈ Bǫ is the unique ǫ-cube containing x. We extend Ῡǫ to a function
+Υǫ : L1 −→L1ǫ by defining Υǫ (a) := Ῡǫ (Eǫ [a]) for any a ∈ L1 . Note that
+Υǫ (a) = Ῡǫ (a) for any a ∈ L1ǫ , because Eǫ acts as the identity on L1ǫ . Thus,
+we will suppress the distinction between Υǫ and Ῡǫ , and write both as “Υǫ ”.
+e : ℓ1 −→ℓ1 by
+f̄ǫ ∈ ℓ1 , then we define the operator Υ
+If κ̃ǫ := κ
+ǫ
+e (a)
+Υ
+ǫ
+
+:=
+
+a · s ◦ (κ̃ǫ ∗ a) + (1 − a) · b ◦ (κ̃ǫ ∗ a),
+D
+
+D
+
+D
+
+∀a ∈ ℓ1 .
+D
+
+e : AZ −→AZ is a Larger
+e (AZ ) ⊆ AZ , and Υ
+Proposition 2.4 (a) Υ
+ǫ
+ǫ
+than Life CA, with birth interval [b0 , b1 ] and survival interval [s0 , s1 ].
+In particular, suppose κ = λ[K]−1 11K , where K = [−1, 1]D ⊂ RD .
+e is an LtL CA with
+If ǫ = 1/n, let Kn := [−n...n]D ⊂ ZD . Then Υ
+ǫ
+neighbourhood Kn .
+e ∈ ℓ1 is a dynamical isomorphism (L1ǫ , Υǫ ) ∼
+(b) The map L1ǫ ∋ a 7→ a
+=
+1 ZD e
+1 e
+ǫ RD
+∼
+(ℓ , Υǫ ), which restricts to a dynamical isomorphism ( A , Υǫ ) = ( A , Υǫ ).
+
+17
+
+e e ), ∀ a ∈
+^
+Proof: (a): Use eqn.(15A). (b): Lemma 2.3(b) implies Υ
+ǫ (a) = Υǫ (a
+L1ǫ .
+✷
+
+Remarks: By choosing s0 ≤ b0 < b1 ≤ s1 and κ appropriately, we can obtain
+any LtL CA in part (a) of Proposition 2.4. Part (b) means that each life form
+D
+D
+e ).
+of (ǫAR , Υǫ ) corresponds to a life form of the LtL CA (AZ , Υ
+♦
+ǫ
+Let ∂AR
+
+D
+
+:=
+
+n
+
+o
+
+D
+
+a ∈ 0AR ; a = 11A for some compact A ⊂ RD with λ[∂A] = 0 .
+D
+
+D
+
+Lemma 2.5 ∂AR is a L1 -dense subset of 0AR .
+D
+
+Proof: Let a ∈ 0AR , and suppose a = 11A for some measurable A ⊂ RD .
+For any ǫ > 0, there is a finite disjoint union U ⊂ RD of bounded closed
+cubes, such that λ[A△U] < ǫ [Fol84, Thm. 2.40(c), p.68]. If u = 11U , then
+ka − uk1 = λ[A△U] < ǫ. Let υ := κ∗u; by slightly increasing/decreasing the
+sidelengths of the cubes of U, we can slightly increase/decrease υ everywhere,
+and thereby ensure that M(u) := λ [υ −1 {s0 , b0 , b1 , s1 }] = 0 (the argument
+D
+is similar to the ‘density’ proof in Theorem 1.2). Hence, u ∈ 0AR . Also,
+D
+u ∈ ∂AR , because λ[∂U] = 0, because ∂U is a finite union of (D − 1)dimensional cube faces.
+✷
+D
+
+Lemma 2.6 Let a ∈ 1AR and κ ∈ K. For any ǫ > 0, let aǫ := Eǫ [a]. Let
+κ̄ǫ ∈ M(ǫZD ) be as in (14). Then
+(a) lim kaǫ − ak1 = 0.
+ǫ→0
+
+D
+
+(b) If a ∈ ∂AR , then lim kκ̄ǫ ∗ aǫ − κ ∗ ak∞ = 0.
+ǫ→0
+
+Proof: (a) is basic martingale theory (see [Bor95, Thm.3.3.2] or [Str93, Cor.5.2.7]).
+(b) First observe that
+kκ̄ǫ ∗ aǫ − κ ∗ ak∞
+
+≤
+
+kκ̄ǫ ∗ aǫ − κ ∗ aǫ k∞ + kκ ∗ aǫ − κ ∗ ak∞ .
+
+(17)
+
+Let K := kκk∞ . Then kκ ∗ aǫ − κ ∗ ak∞ = kκ ∗ (aǫ − a)k∞ ≤ K·kaǫ − ak1 ,
+by Young’s inequality. Thus (a) implies that lim kκ ∗ aǫ − κ ∗ ak∞ = 0.
+ǫ→0
+Thus, eqn.(17) implies that
+lim kκ̄ǫ ∗ aǫ − κ ∗ ak∞
+ǫ→0
+
+≤
+
+lim kκ̄ǫ ∗ aǫ − κ ∗ aǫ k∞ .
+ǫ→0
+
+We claim the right-hand limit is zero. To see this, we need some notation. For
+h
+D
+n
+nǫ
+any n ∈ N, and x, y ∈ RD , we write “x ❀ y” to mean that y ∈ x+ − nǫ
+,
+2
+2
+n
+(note that this relation is not quite symmetric). If U, V ⊂ RD , then “U ❀
+n
+V” means u ❀ v for some u ∈ U and v ∈ V. For example, if z ∈ ZD , recall
+D
+n
+o
+h
+1
+= c ∈ RD ; ǫz ❀ c .
+that C(z, ǫ) := ǫz + − 2ǫ , 2ǫ
+18
+
+2
+
+Note: if x ❀
+6 y, then x and y cannot be in the same Bǫ -cube [because if
+2
+B ∈ Bǫ and x, y ∈ B, then x ❀ y].
+D
+D
+x
+n Suppose a = 11A , forosome A ⊂ R . For any x ∈ R , let Wǫ :=
+3
+z ∈ ZD ; ∂A ❀ (x − ǫz) and let Vǫ := ZD \ Wǫx . Then
+κ̄ǫ ∗ aǫ (x) =
+
+X
+
+z∈ZD
+
+X
+
+=
+
+kz · aǫ (x − ǫz)
+
+w∈Wǫx
+
+kw · aǫ (x − ǫw) +
+
+X
+
+kv · aǫ (x − ǫv),
+
+=
+
+X
+
+v∈Vǫ
+
+(18)
+
+and
+κ ∗ aǫ (x)
+=
+
+X
+
+Z
+
+=
+
+RD
+
+Z
+
+w∈Wǫx C(w,ǫ)
+
+κ(y) · aǫ (x − y) dy
+
+For any v ∈ Vǫ ,
+
+Claim 1:
+
+X
+
+κ(c) · aǫ (x − c) dc +
+Z
+C(v,ǫ)
+
+Z
+
+v∈VǫC(v,ǫ)
+
+Z
+
+z∈ZD C(z,ǫ)
+
+κ(c) · aǫ (x − c) dc
+
+κ(c) · aǫ (x − c) dc.
+
+(19)
+
+κ(c) · aǫ (x − c) dc = aǫ (x − ǫv) · kv .
+3
+
+2
+
+Proof: Let C := x − C(v, ǫ). If v ∈ Vǫ , then ∂A ❀
+6 (x − ǫv). Thus, ∂A 6❀ C.
+Thus if B ∈ Bǫ and B ∩ C 6= ∅, then B ∩ ∂A = 0 [because if b ∈ B, then
+2
+b ❀ C, so b 6∈ ∂A]. Thus, no Bǫ -cube can intersect both C and ∂A. Thus,
+aǫ is constant on C, because:
+either aǫ |C ≡ 0, if every element of C lies in a Bǫ -cube entirely outside A,
+or aǫ |C ≡ 1, if every element of C lies in a Bǫ -cube that is entirely inside
+A.
+Thus,
+
+Z
+C(v,ǫ)
+
+κ(c) · aǫ (x − c) dc (†)
+
+Z
+C
+
+κ(x − c′ ) · aǫ (c′ ) dc′
+
+= aǫ (x − ǫv)
+
+Z
+
+C(v,ǫ)
+
+κ(c) dc (∗) aǫ (x − ǫv) · kv ,
+
+where (†) is the change of variables c′ := x − c, and (∗) is by eqn.(14).
+✸ Claim 1
+Applying Claim 1 to eqn.(19), we conclude that
+κ ∗ aǫ (x)
+
+=
+
+X
+
+Z
+
+w∈Wǫx C(w,ǫ)
+
+κ(c) · aǫ (x − c) dc +
+
+X
+
+v∈Vǫ
+
+kv · aǫ (x − ǫv).
+
+(20)
+
+Subtracting eqn.(20) from eqn.(18), we see that
+|κ̄ǫ ∗ aǫ (x) − κ ∗ aǫ (x)|
+
+≤
+
+X
+
+w∈Wǫx
+
+kw · aǫ (x − ǫw) −
+
+19
+
+Z
+C(w,ǫ)
+
+κ(c) · aǫ (x − c) dc
+
+≤
+
+X 
+
+kκ̃ǫ k∞ · kaǫ k∞ + λ[C(ǫ)] · kκk∞ · kaǫ k∞
+
+w∈Wǫx
+
+
+
+≤ 2K · #(Wǫx ) · ǫD .
+
+(21)
+
+(∗)
+
+(∗) is by eqn.(15B), the fact that λ[C(ǫ)] = ǫD , and the fact that kaǫ k∞ ≤ 1,
+because aǫ = Eǫ [11A ]. It remains to control the right hand side of eqn.(21).
+Claim 2: Fix ǫ > 0. For any x, y ∈ RD , #(Wǫx ) = #(Wǫy ).
+Proof: Fix x ∈ RD , and let Ax := x − A = {x − a ; a ∈ A}. Then ∂Ax :=
+x − ∂A. Thus,
+Wǫx
+
+n
+
+=
+
+o
+
+3
+
+z ∈ ZD ; ǫz ❀ ∂Ax ,
+
+because for any z ∈ ZD ,
+
+
+z ∈ Wǫx
+
+
+
+⇐⇒
+
+
+
+3
+
+∂A ❀ (x − ǫz)
+
+(22)
+
+
+
+⇐⇒
+
+
+
+
+
+3
+ǫz ❀ (x − ∂A) = ∂Ax .
+
+Define ξ :nR−→RD by ξ(t) := xo + (ǫt, 0, ..., 0); hence ξ(0) = x. Let Wt :=
+3
+Wǫξ(t) = z ∈ ZD ; ǫz ❀ ∂Aξ(t) . Hence W0 = Wǫx . As we increase t, elements of ZD enter Wt at the same rate as they leave. To be precise, for
+each z ∈ ZD , let
+Ti (z) := inf {t ∈ R ; z ∈ Wt } and To (z) := max {t ∈ R ; z ∈ Wt }
+be the ‘entrance time’ of z into Wt , and ‘exit time’ out of Wt , respectively.
+Also, for any t > 0, let
+I(t) :=
+
+n
+
+o
+
+z ∈ ZD ; 0 ≤ Ti (z) ≤ t
+
+and O(t) :=
+
+n
+
+o
+
+z ∈ ZD ; 0 ≤ To (z) ≤ t .
+
+Thus, #(Wt ) = #(W0 ) + #I(t) − #O(t).
+But for all t > 0, #I(t) = #O(t). To see this, let z ∈ ZD ; if z′ =
+z + (3, 0, . . . , 0), then clearly To (z) = Ti (z′ ). This yields a bijection I(t) ∋
+z 7→ z′ ∈ O(t).
+It follows that #(Wt ) = #(W0 ) for all t > 0. In other words, #Wǫx is
+constant as we vary the first coordinate of x. The same applies to any other
+coordinate.
+✸ Claim 2
+Claim 3:
+For any δ > 0, there is ǫ > 0 such that, for all x ∈ RD ,
+#(Wǫx ) · ǫD < δ/2K.
+Proof: Fix x ∈ RD and let Ax be as in Claim 2. Then eqn.(22) says that
+Wǫx is the set of all cube centres of a covering Uǫ of ∂Ax by (overlapping)
+3
+ǫ-cubes, defined
+2
+Uǫ
+
+:=
+
+[
+
+w∈Wǫx
+
+C′ (w, 32 ǫ),
+
+where C′ (w, 23 ǫ) := ǫw +
+
+20
+
+h
+
+D
+
+−3
+ǫ, 32 ǫ
+2
+
+.
+
+(∗)
+
+Thus, λ[Uǫ ] ≥ 31D #(Wǫx )·λ[C′ (0, 23 ǫ)] = #(Wǫx )·(3ǫ)D /3D = #(Wǫx )·ǫD ,
+where (∗) is because each point of Uǫ is covered by at most 3D distinct 32 ǫcubes in the covering. If Bǫ := ∂A + (−3ǫ, 3ǫ)D , then ∂Ax ⊂ Uǫ ⊂ Bǫ .
+Thus,
+lim #(Wǫx ) · ǫD ≤ lim λ[Uǫ ] ≤ lim λ[Bǫ ]
+ǫ→0
+
+ǫ→0
+
+(∗)
+
+ǫ→0
+
+λ[∂Ax ] = λ[∂A]
+
+0.
+
+(†)
+
+(23)
+
+D
+
+Here, (†) is because a ∈ ∂AR , and (∗) is by ‘continuity from above’ of
+the measure λ, because {Bǫ }ǫ>0 is a decreasing family of open sets with
+T
+T
+ǫ>0 Bǫ , then x is a cluster point of ∂A,
+ǫ>0 Bǫ = ∂A (because: if x ∈
+which is a closed set, so x ∈ ∂A).
+For any δ > 0, eqn.(23) yields ǫ > 0 such that #(Wǫx ) · ǫD < δ/2K. But
+then Claim 2 implies #(Wǫy ) · ǫD < δ/2K for any y ∈ RD .
+✸ Claim 3
+D
+If δ > 0 and ǫ > 0 are as in Claim 3, then for any x ∈ R , eqn.(21) says that
+|κ̄ǫ ∗ aǫ (x) − κ ∗ aǫ (x)|
+
+2K#(Wǫx ) · ǫD
+
+≤
+
+<
+
+δ.
+
+Thus, kκ̄ǫ ∗ aǫ − κ ∗ aǫ k∞ < δ. Let δ→0 to get lim kκ̄ǫ ∗ aǫ − κ ∗ aǫ k∞ = 0.
+ǫ→0
+✷
+Proof of Theorem 2.1:
+
+Claim 1:
+
+D
+
+If a ∈ ∂AR , then L1−lim Υǫ (a) = Υ(a).
+ǫ→0
+
+Proof: Let α := κ ∗ a. For any ǫ > 0, let αǫ := κ̄ǫ ∗ aǫ , where aǫ = Eǫ (a). Then
+Υǫ (a) = aǫ · s ◦ αǫ + (1 − aǫ ) · b ◦ αǫ , by eqn.(16),
+and
+Υ(a) = a · s ◦ α + (1 − a) · b ◦ α,
+by eqn.(2).
+Thus, Υǫ (a) − Υ(a) = (aǫ − a) · s ◦ αǫ + a · (s ◦ αǫ − s ◦ α)
++ (a − aǫ ) · b ◦ αǫ + (1 − a) · (b ◦ αǫ − b ◦ α) .
+So, kΥǫ (a) − Υ(a)k1 ≤ kaǫ − ak1 · ks ◦ αǫ k∞ + kak∞ · ks ◦ αǫ − s ◦ αk1
++ ka − aǫ k1 · kb ◦ αǫ k∞ + k1 − ak∞ · kb ◦ αǫ − b ◦ αk1 .
+≤ 2 · kaǫ − ak1 + ks ◦ αǫ − s ◦ αk1 + kb ◦ αǫ − b ◦ αk1 . (24)
+D
+
+Now, Lemma 2.6(a) says lim kaǫ − ak1 = 0. Also, a ∈ ∂AR , so Lemma
+ǫ→0
+2.6(b) says lim kαǫ − αk∞ = 0. Thus, Lemma 1.6(b,d) says lim ks ◦ αǫ − s ◦ αk∞ =
+ǫ→0
+
+D
+
+ǫ→0
+
+0 and lim kb ◦ αǫ − b ◦ αk∞ = 0, because a ∈ 0AR .
+ǫ→0
+Combine these facts with eqn.(24) to get lim kΥǫ (a) − Υ(a)k1 = 0. ✸ Claim 1
+ǫ→0
+
+D
+
+1
+
+Claim 2: The family {Υǫ }ǫ>0 is L -equicontinuous at every a ∈ 0AR .
+D
+Proof: Let a ∈ 0AR and fix γ > 0. We want δ > 0 so that, if ka − a′ k1 < δ,
+then, for all ǫ > 0, kΥǫ (a) − Υǫ (a′ )k1 < γ. Now, M(a) = 0, so Lemma
+1.6(d) yields δ > 0 with
+δ <
+
+γ
+,
+4
+
+Mas (Kδ) <
+
+γ
+,
+4
+
+and
+
+21
+
+Mab (Kδ) <
+
+γ
+.
+4
+
+(25)
+
+(Here, K := kκk∞ .) Suppose a′ ∈ L1 , with ka − a′ k1 < δ. Let aǫ := Eǫ (a)
+and a′ǫ := Eǫ (a′ ); then kaǫ − a′ǫ k1 ≤ ka − a′ k1 < δ, because Eǫ is a bounded
+e and a
+e ′ be the corresponding
+linear operator on L1 with kEǫ k = 1. Let a
+e−a
+e ′ k1 = kaǫ − a′ǫ k1 /ǫD < δ/ǫD , by Lemma 2.2(b).
+elements of ℓ1 ; then ka
+Thus, if α = κ̄ǫ ∗ aǫ and α′ = κ̄ǫ ∗ a′ǫ , then
+^′
+kα − α′ k∞ (∗) κ̄^
+ǫ ∗ aǫ − κ̄ǫ ∗ aǫ
+
+∞
+
+(†)
+
+e − κ̃ǫ ∗ a
+e ′ k∞
+kκ̃ǫ ∗ a
+
+e−a
+e ′ k1 ≤ kκ̃ǫ k∞ ·
+≤ kκ̃ǫ k∞ · ka
+
+(⋄)
+
+≤ kκk∞ · ǫD ·
+(‡)
+
+δ
+ǫD
+
+=
+
+δ
+ǫD
+
+Kδ.
+
+(26)
+
+Here, (∗) is by Lemma 2.2(a), (†) is by Lemma 2.3(b), (⋄) is by Young’s
+inequality, and (‡) is by eqn.(15B). It is easy to prove the analog of Lemma
+1.6(a) for Υǫ . Combined with Lemma 1.6(b) and eqn.(26), this yields:
+∀ ǫ > 0,
+
+kΥǫ (a) − Υǫ (a′ )k1
+
+≤
+
+2δ + Mas (Kδ) + Mab (Kδ)
+
+≤
+
+γ.
+
+(∗)
+
+Here, (∗) is by eqn.(25). This works for all ǫ > 0, so {Υǫ }ǫ>0 is equicontinuous at a.
+✸ Claim 2
+D
+(a) Let a ∈ 0AR , and fix γ > 0. Theorem 1.1 and Claim 2 together
+D
+yield δ > 0 so that, for any a′ ∈ 0AR , if ka′ − ak1 < δ, then
+kΥ(a′ ) − Υ(a)k1 <
+
+γ
+,
+3
+
+and, ∀ ǫ > 0, kΥǫ (a) − Υǫ (a′ )k1 <
+
+γ
+.
+3
+
+(27)
+
+D
+
+By Lemma 2.5, find some a′ ∈ ∂AR with ka′ − ak1 < δ. Finally, Claim 1
+yields some E > 0 so that, if 0 < ǫ < E, then kΥǫ (a′ ) − Υ(a′ )k1 < γ3 . Thus,
+if 0 < ǫ < E, then
+kΥǫ (a) − Υ(a)k1
+≤ kΥǫ (a) − Υǫ (a′ )k1 + kΥǫ (a′ ) − Υ(a′ )k1 + kΥ(a′ ) − Υ(a)k1
+Since this works for any γ, we conclude that L1−lim Υǫ (a) = Υ(a).
+ǫ→0
+(b) follows from part (a), Claim 2, and Proposition 1.7.
+
+3
+
+≤
+
+γ.
+
+(27)
+
+✷
+
+A gallery of still lifes
+D
+
+Proposition 3.1 Let a = 11A ∈ AR , let s ◦ (κ ∗a) = 11S and let b ◦ (κ
+ ∗ a) =
+D
+Υ(a) = a ⇐⇒ B ⊆ A ⊆ S .
+11B , for some A, S, B ⊂ R . Then
+Proof: Υ(a) = 11U , where U := (A ∩ S) ⊔ (A∁ ∩ B). Thus,
+22
+
+
+
+Υ(a) = a
+
+
+
+⇐⇒
+⇐⇒
+
+
+
+
+
+
+
+A = U = (A ∩ S) ⊔ (A∁ ∩ B)
+
+A ∩ S = A and A∁ ∩ B = ∅
+
+
+
+
+
+
+
+B⊆A⊆S . ✷
+
+⇐⇒
+
+Corollary 3.2 If supp (κ) is a neighbourhood of zero, and s0 ≥ 21 , then Υ has
+no bounded still lifes.
+Proof: Suppose H ⊂ RD was any open halfspace such that 0 ∈ ∂H. Then
+Z
+
+κ(−h) dλ[h] +
+
+Z
+
+κ(−h) dλ[h]
+
+κ(−x) dλ[x]
+
+=
+
+1.
+
+RD
+
+H∁
+
+H
+
+Z
+
+=
+
+R
+
+Thus (replacing H with H∁ if necessary) we can assume H κ(−h) dλ[h] ≤ 12 .
+D
+Let A ⊂ RD be some bounded set, and let a := 11A ∈ AR . Let C be
+the convex closure of A. By translating A if necessary, we can assume that
+C ⊂ H, and that ∂C is tangent to ∂H. By slightly rotating H if necessary,
+we can assure that ∂C is tangent to ∂H at precisely one extremal point e,
+R
+while still preserving the inequality H κ(−h) dλ[h] ≤ 21 . If e is extremal in
+C, then e ∈ A. By further translating A, we assume e = 0. Thus,
+κ ∗ a(0) =
+
+Z
+
+A
+
+1
+≤
+2
+
+κ(−a) dλ[a] ≤
+(‡)
+
+Z
+
+κ(−c) dλ[c] <
+(∗)
+
+C
+
+Z
+
+κ(−h) dλ[h]
+
+H
+
+≤ s0 .
+
+Here, (‡) is because A ⊆ C. To see (∗), let K = supp (κ), a neighbourhod
+of 0. But 0 is a cluster point of (H \ C) (because C ∩ ∂H = {0}), so
+U := −K ∩ (H \ C) is a nonempty open set. Thus
+Z
+
+H
+
+κ(−h) dλ[h] −
+
+Z
+
+κ(−c) dλ[c]
+
+C
+
+=
+
+Z
+
+κ(−u) dλ[u]
+
+>
+
+0.
+
+U
+
+Thus s ◦ (κ ∗ a)(0) = 0, so (in terms of Proposition 3.1) 0 6∈ S. Hence, A 6⊆ S;
+so 11A can’t be a still life.
+✷
+In a sense, as s0 becomes larger, the maximum convex curvature of the boundary of a still life becomes smaller. For example, suppose D = 2. If s0 > 14 ,
+then no still life can have a convex right angle or acute angle on its boundary
+(because if a was a still life whose boundary made an angle ≤ π/2 at x, then
+κ ∗ a(x) ≤ 41 < s0 ). If s0 > 21 , then the boundary of a still life must be concave
+everywhere, which is impossible; hence Corollary 3.2.
+Evans [Eva01,Eva03a] has found compact, ‘ball’-shaped still lifes in many LtL
+CA, reminiscent of the well-known 2 × 2 square block from Conway’s Life.
+We’ll now construct a broad family of such still lifes. If A ⊂ RD , we define
+(A − A) := {x − y ; x, y ∈ A}.
+23
+
+Proposition 3.3 Let κ = λ[K]−1 · 11K , where K ⊂ RD is compact. Let A ⊂
+RD . Suppose (λ[A]/λ[K]) ∈ [s0 , b0 ) and that (A − A) ⊂ K. Then 11A is a still
+life.
+Proof: Let a := 11A . For any x ∈ A, let Kx := {x − k ; k ∈ K}.
+
+Claim 1: For any x ∈ A, A ⊂ Kx .
+Proof: If y ∈ A, then k := x−y ∈ (A−A) ⊂ K, so k ∈ K, so y = x−k ∈ Kx .
+✸ Claim 1
+Let s ◦ (κ ∗ a) = 11S and b ◦ (κ ∗ a) = 11B , for some S, B ⊂ RD .
+Claim 2: A ⊂ S.
+Proof: For any x ∈ A, κ∗ a(x) = λ[A ∩Kx ]/λ[K] (∗) λ[A]/λ[K] ∈ [s0 , b0 ) ⊂
+[s0 , s1 ], where (∗) is by Claim 1. Thus, s◦(κ∗a)(x) = 1, so x ∈ S. ✸ Claim 2
+Claim 3: B = ∅. (Hence, it is vacuously true that B ⊆ A).
+Proof: For any x ∈ RD , κ ∗ a(x) = λ[A ∩ Kx ]/λ[K] ≤ λ[A]/λ[K] < b0 .
+Thus, b ◦ (κ ∗ a)(x) = 0.
+✸ Claim 3
+Claims 2 and 3 satisfy the conditions of Prop.3.1, so a is a still life.
+✷
+
+The main examples of Proposition 3.3 are balls with respect to some norm on
+RD = RD .
+J
+
+Proposition
+3.4 Let
+on RD , and for any r > 0, let (r) :=
+n
+o k•k∗ be a norm
+J
+x ∈ RD ; kxk∗ ≤ r . Let K := (1), and let κ := λ[K]−1 · 11K . Suppose
+√
+s0 ≤ 21D , and let R := min{ D b0 , 21 }.
+If r < R, A ⊆
+In particular, if
+
+J
+
+(r), and s0 · λ[K] ≤ λ[A] then a = 11A is a still life.
+J
+J
+√
+( D s0 ) ⊆ A ⊆ (r) ⊂ (R), then a = 11A is a still life.
+
+J
+
+Before proving Proposition 3.4, we give some examples. Let RD = R2 and
+suppose s0 ≤ 14 ≤ b0 , so that R = 12 .
+n
+
+o
+
+ℓ1 norm: For any r > 0, let D(r) := x = (x1 , x2 ) ∈ RD ; |x1 | + |x2 | ≤ r be
+the diamond
+of diameter 2r. Let κ := 21 11D(1) . Then 11D(r) is a still life for
+h√
+s0 , 21 .
+any r ∈
+ℓ2 norm: For any r > 0, let B(r) := {x ∈ R2 ; |x| ≤ r} beh the disk
+of radius
+√ 1
+1
+r. Let κ := π 11B(1) . Then 11B(r) is a still life for any r ∈
+s0 , 2 ,
+2
+∞
+ℓ norm: For any r > 0, let C(r) := [−r, r] be the square
+h√ ofsidelength 2r.
+1
+Let κ := 4 11C(1) . Then 11C(r) is a still life for any r ∈
+s0 , 12 .
+Proof of Proposition 3.4:
+We will verify the conditions of Proposition 3.3.
+J
+To see that (A−A) ⊂ K, suppose x, y ∈ A. Then x, y ∈ (r), so kx − yk∗ ≤
+kxk∗ + kyk∗ ≤ r + r < 2R ≤ 1. Thus, (x − y) ∈ K.
+24
+
+S
+
+1
+
+0.7
+
+Area= π4 − arccos(w)/2
+√
+Area= 12 w · 1 − w2
+
+0.6
+0.5
+
+ß
+
+PSfrag replacementsarccos(w)
+
+0.3
+
+1
+
+0.2
+
+√
+1 − w2
+
+x
+
+Bx
+
+0.1
+
+PSfrag replacements
+
+√
+1 − w2
+
+π
+2 − arccos(w)
+
+0.4
+
+0
+
+0.5
+
+0
+
+√
+Area= 21 w · 1 − w2
+Area= π4 − arccos(w)/2
+
+R
+
+1
+
+w
+
+(A)
+
+(B)
+
+Fig. 2. The functions S 1 and ß in Proposition 3.5.
+
+Also, (λ[A]/λ[K]) ∈ [s0 , b0 ), because
+s0
+
+≤
+
+(∗)
+
+λ[A]
+λ[K]
+
+≤
+
+(†)
+
+J
+
+λ[ (r)]
+λ[K]
+
+(‡)
+
+rD ·
+
+λ[K]
+λ[K]
+
+=
+
+rD
+
+<
+
+b0 .
+
+(⋄)
+
+J
+
+Here, (∗) is because s0 ·λ[K] ≤ λ[A] by hypothesis. (†) is because A ⊆ (r).
+J
+(‡) is because (r) = r√· K, and λ is the D-dimensional Lebesgue measure.
+(⋄) is because r < R ≤ D b0 .
+J √
+J √
+In particular, if A ⊇ ( D s0 ), then λ[A] ≥ λ[ ( D s0 )] (∗) s0 · λ[K],
+J √
+√
+✷
+where (∗) is because ( D s0 ) = D s0 · K.
+Remark: Proposition 3.4 doesn’t apply if s0 = b0 . However, the proof can be
+extended to the special case s0 = 21D = b0 (eg. s0 = 14 = b0 when D = 2). ♦
+Let γ : R−→R2 be a smooth path. If w > 0, the ribbon of width w around γ
+is the set
+R(γ, w)
+
+:=
+
+n
+
+o
+
+x ∈ R2 ; |x − γ(t)| ≤ w/2, for some t ∈ R .
+
+We assume that γ is an arc-length parameterization –ie. |γ̇| ≡ 1. The curvature
+of R(γ, w) is the maximal value of |γ̈(t)| for t ∈ R. In particular, a flat ribbon
+is one with curvature 0 —in this case, γ is an affine function (ie. γ(t) = tv + x
+for some x, v ∈ R2 , with |v| = 1). We’ll construct still lifes shaped like slowly
+curving ribbons through R2 .
+Proposition 3.5 Let B := {x ∈ R2 ; |x| ≤ 1} be the unit disk. Let κ := π1 11B .
+We define functions ß, S 1 : (0, 1]−→(0, 1] by
+25
+
+
+1 1 √
+w · 1 − w 2 − arccos(w) ,
++
+2 π
+
+1 w √
+· 4 − w 2 − 2 arccos(w/2) .
+S 1 (w) := 1 +
+π 2
+
+ß(w) :=
+
+and
+
+[Figure 2(A)]
+
+Let w ∈ (0, 1].
+(a) If s0 ≤ ß(w) ≤ b0 and S 1 (w) ≤ s1 , then any flat ribbon of width w is a
+still life.
+(b) If s0 < ß(w) < b0 and S 1 (w) < s1 , then any ribbon of width w and small
+enough curvature is a still life.
+Proof: (a) Let R be a flat ribbon of radius w, and let r := 11R . Suppose x is
+a point on the boundary of R, and z is a point on the centre line of R.
+
+Claim 1: (a) κ ∗ r(x) = ß(w).
+(b) κ ∗ r(z) = S 1 (w).
+2
+Proof: Let Bx = {b ∈ R ; |x − b| ≤ 1}. Then κ ∗ r(x) = π1 λ[Bx ∩ R] = ß(w),
+as shown in Figure 2(B). Likewise, κ ∗ r(z) = π1 λ[Bz ∩ R] = 2 · ß(w/2) =
+✸ Claim 1
+S 1 (w).
+Now, κ ∗ r(y) is monotonically decreasing function of the distance of y from
+the centre line of R. Thus, If y ∈ R is any other point inside the ribbon,
+then we have
+s0 ≤ ß(w) (a) κ ∗ r(x) ≤ κ ∗ r(y) ≤ κ ∗ r(z) (b) S 1 (w) ≤ s1 .
+(h)
+
+(h)
+
+Here, (h) is by hypothesis, (a) is by Claim 1(a), and (b) is by Claim 1(b).
+Hence, s[κ ∗ r(w)] = 1.
+However, if y ∈ R∁, then κ ∗ r(y) < κ ∗ r(x) (a) ß(w) ≤ b0 , where (a) is
+(h)
+
+by Claim 1(a) and (h) is by hypothesis. Thus, b[κ ∗ r(y)] = 0, as desired.
+(b) In a slightly curving ribbon, Claim 1(a) will contain an error proportional to the curvature of R. But if s0 < ß(w) < b0 and the curvature
+is small enough, then we will still have s0 ≤ κ ∗ r(x) for any x ∈ ∂R, and
+κ ∗ r(y) < b0 for any y ∈ R∁.
+Likewise, Claim 1(b) will contain an error proportional to the curvature of
+R. But if S 1 (w) < s1 and the curvature is small enough, we will still have
+κ ∗ r(z) ≤ s1 , and thus, κ ∗ r(y) ≤ s1 for any y ∈ R.
+✷
+Remark: Figure 2(A) shows that we can find values of w ∈ (0, 1] satisfying
+s0 ≤ ß(w) ≤ b0 for any s0 ≤ b0 ≤ 0.5. Also, for most of this range, we have
+S 1 (w) ≈ ß(w), so it is not hard to simultaneously achieve S 1 (w) ≤ s1 , if s1
+is much larger that b0 . For example, if s0 ≤ 0.25 ≤ b0 , and 0.3 ≤ s1 , then a
+value of w ≈ 0.4 will suffice.
+♦
+We can generalize Proposition 3.5 to RD . Let Υ be a RealLife EA with convolution kernel κ ∈ K. We say κ is rotationally symmetric if there is some
+26
+
+D
+function κ : [0,
+n ∞)−→[0, ∞) soothat κ(x) = κ|x| for all Dx ∈ R . If R > 0,
+let B(R) := x ∈ RD ; |x| ≤ R and bR := 11B(R) ∈ 1AR . If r ∈ [0, R], let
+
+n
+
+o
+
+A(r, R) := x ∈ RD ; r ≤ |x| ≤ R be the bubble with inner radius r and outer
+D
+
+radius R (e.g. if D = 2, then A(r, R) is an annulus). Let ar,R := 11A(r,R) ∈ 1AR .
+Let M ⊂ RD be a smooth, (D − 1)-dimensional hypersurface, and let w > 0.
+The curtain of width w around M is the set
+C(M, w)
+
+:=
+
+n
+
+o
+
+x ∈ RD ; |x − m| ≤ w/2, for some m ∈ M .
+
+The curvature of C(M, w) is the maximal curvature of any smooth path
+through M obtained by intersecting a 2-dimensional affine plane with M.
+In particular, a flat curtain is one with curvature 0 —in this case, M is a
+(D − 1)-dimensional affine hyperplane. For example, if r > 0, and M is a
+sphere of radius R0 = r + w/2, then C(M, w) = A(r, r + w) is a bubble,
+whose curvature is inversely proportional to r.
+Proposition 3.6 Let Υ have a rotationally symmetric kernel κ.
+n
+
+o
+
+(a) For any r ∈ R, let Hr := (x1 , . . . , xD ) ∈ RD ; x1 ≤ r . Define h :
+R
+R−→R by h(r) := Hr κ(x) dx, and define ß, S 1 : (0, ∞)−→(0, 1] by
+ß(w) := h(w) − h(0) and S 1 (w) := h(w/2) − h(−w/2). Then ß and S 1 are
+differentiably increasing, with the following properties, for any w > 0:
+[i] If s0 ≤ ß(w) ≤ b0 and S 1 (w) ≤ s1 , then any flat curtain of width w is
+a still life.
+[ii] If s0 < ß(w) < b0 and S 1 (w) < s1 , then any curtain of width w and
+small enough curvature is a still life.
+R
+(b) Define S 1 : [0, ∞)−→[0, ∞) by S 1 (R) := B(R) κ(x) dx, for any R ≥ 0.
+There is a differentiably increasing function ß : [0, ∞)−→[0, 1] so that,
+for any R > 0, if s0 ≤ ß(R) < b0 and S 1 (R) ≤ s1 , then bR is a still life.
+(c) Let ∆ := {(r, R) ∈ R2 ; 0 < r < R}. There are differentiable functions
+ß, B 0 , B 1 , S 1 : ∆−→[0, 1] (nondecreasing in R and nonincreasing in r) so
+that, for any (r, R) ∈ ∆, if s0 ≤ ß(r, R) < b0 , S 1 (r, R) ≤ s1 , and either
+B 0 (r, R) < b0 or b1 < B 1 (r, R) then ar,R is a still life.
+Proof: (a) Let M be a hyperplane, let C = C(M, w) be a flat curtain of
+width w, and let c := 11C . If x ∈ ∂C, then κ ∗ c(x) = ß(w). If z ∈ M,
+then κ ∗ c(z) = S 1 (w). These values are independent of the choice of points
+x or z (because M is translationally symmetric), and independent of the
+orientation of M (because κ is rotationally symmetric). The proof of [i] is
+now like Proposition 3.5(a). The proof of [ii] is like Proposition 3.5(b).
+(b) Fix R > 0, and let x ∈ ∂B(R). Define ß(R) := κ ∗ bR (x). This
+value does not depend on x, because the function κ ∗ bR is rotationally
+symmetric, because κ and bR are rotationally symmetric. Also observe that
+27
+
+R
+
+κ ∗ bR (0) = B(R) κ(x) dx = S 1 (R).
+The value of κ ∗ bR (y) is a nonincreasing function of |y|. If y ∈ B(R), then
+|y| < |x|, so
+s0 ≤ ß(R) = κ ∗ bR (x) ≤ κ ∗ bR (y) ≤ κ ∗ bR (0) = S 1 (R) ≤ s1 ,
+(h)
+
+(h)
+
+where (h) is by hypothesis. Hence, s[κ ∗ bR (y)] = 1, as desired. If y ∈ B(R)∁,
+then |y| > |x|, so κ∗bR (y) ≤ κ∗bR (x) = ß(R) < b0 . Thus, b[κ∗bR (y)] = 0,
+(h)
+
+as desired.
+(c) Fix R > 0, and let x ∈ ∂A(r, R) be a point with |x| = R. Define
+ß(r, R) := κ ∗ ar,R (x). This value does not depend on x, because the function κ ∗ ar,R is rotationally symmetric, because κ and ar,R are rotationally
+symmetric. We also define
+B 1 (r, R)
+
+:=
+
+min κ ∗ ar,R (x)
+
+≤
+
+B 0 (r, R) := max κ ∗ ar,R (x)
+
+and
+
+S 1 (r, R) := max κ ∗ ar,R (x).
+
+x∈B(r)
+
+x∈B(r)
+
+x∈A(r,R)
+
+If y ∈ A(r, R), then s0 ≤ ß(r, R) := κ ∗ ar,R (x) ≤ κ ∗ ar,R (y) ≤
+(h)
+
+S 1 (r, R) ≤ s1 , so s[κ ∗ ar,R (y)] = 1, as desired. If y ∈ A(r, R)∁, and |y| > R,
+(h)
+
+then κ ∗ ar,R (y) < κ ∗ ar,R (x) =: ß(r, R) < b0 , so b[κ ∗ br (y)] = 0, as
+(h)
+
+desired.
+If y ∈ A(r, R)∁, and |y| < r, then either κ ∗ ar,R (y) ≤ B 0 (r, R) < b0 , or
+✷
+κ ∗ ar,R (y) ≥ B 1 (r, R) > b1 ; either way, b[κ ∗ ar,R (y)] = 0, as desired.
+Remarks: (a) Proposition 3.6(c) describes two classes of bubble-shaped still
+lifes: those with ‘small’ internal cavity (ie. a small value of r), and those
+with large cavity (large r). The ‘small cavity’ bubbles satisfy the condition
+B 1 (r, R) > b1 , because r is small enough that κ ∗ ar,R (x) > b1 for all x ∈ B(r).
+The ‘large cavity’ bubbles must instead satisfy the condition B 0 (r, R) < b0 .
+Observe that ß(r, R) < B 0 (r, R) (by concavity); hence a large-cavity bubble
+requires s0 ≤ ß(r, R) < B 0 (r, R) < b0 (which is impossible if s0 = b0 ).
+(b) Proposition 3.6 can be extended to Larger than Life CA, with two caveats.
+[i] RealLife EA with rotationally symmetric kernels are isotropic, but LtL
+CA are inherently anisotropic due to lattice effects. Thus, the functions B 0 ,
+S 1 , etc. will all have a directional dependence, and some curtain directions
+will be ‘favoured’ over others.
+[ii] The functions κ ∗ r, κ ∗ bR , and κ ∗ ar,R will decrease in discrete steps.
+Thus, we must replace the ‘boundary value’ function ß with two functions, S 0
+and B 0 , measuring the value of κ ∗ r on the ‘inside edge’ and ‘outside edge’ of
+the boundary, respectively. The inequality ‘s0 ≤ ß < b0 ’ is then replaced two
+28
+
+inequalities: ‘s0 ≤ S 0 ’ and ‘B 0 < b0 ’. In general, B 0 < S 0 ; hence, these two
+inequalities are simultaneously satisfiable, even if s0 = b0 (as is often true for
+the LtL CA studied in [Eva96,Eva01,Eva03a,Eva03b,Eva05]).
+♦
+4
+
+Robustness of still lifes in the Hausdorff metric
+
+If X, Y ⊂ RD are closed sets, then the Hausdorff metric from X to Y is
+defined
+dH (X, Y)
+
+:=
+
+1
+1
+sup inf d(x, y) + sup inf d(y, x).
+2 x∈X y∈Y
+2 y∈Y x∈X
+D
+
+(28)
+
+D
+
+We define the metric d∗ on 1AR as follows: for any a, b ∈ 1AR , if a = 11A and
+b = 11B (for some A, B ⊂ RD ), then d∗ (a, b) := ka − bk1 + dH (∂A, ∂B).
+The main result of this section states conditions under which a still life in
+1 RD
+A will be surrounded by a d∗ -neighbourhood of other still lifes. First we
+D
+need some machinery. If a ∈ 1AR , we say that a is κ-smooth if the function
+κ ∗ a is C 2 on an open dense subset of RD . For example, if κ ∈ C 2 , then all
+D
+D
+elements of AR are κ-smooth [because, if a ∈ AR , then for any c, d ∈ [1...D],
+∂c ∂d (κ ∗ a)(x) = (∂c ∂d κ) ∗ a(x) is defined and continuous at all x ∈ RD ].
+If κ is not smooth (eg. κ = λ[K]−1 11K for K ⊂ RD ), then κ-smoothness is still
+fairly common. For example, call a subset A ⊂ RD smoothly open if A is open
+and ∂A is a piecewise smooth manifold. Thus, an open ball is smoothly open,
+because its boundary is a sphere, and an open cube is smoothly open, because
+its boundary is a union of 2D flat faces.
+Lemma 4.1 Let K be smoothly open and let κ := λ[K]−1 11K . If A ⊂ RD is
+also smoothly open, then a := 11A is κ-smooth.
+Proof: (sketch) The boundaries of A and K can be decomposed into pieces
+which are the graphs of smooth functions from RD−1 into R. There is an open
+dense subset Y ⊂ RD so that, if y ∈ Y, then κ ∗ a(y) can be expressed as
+a sum of the integrals under these graphs, over rectangular domains whose
+boundaries are determined by the coordinates of y. Thus, these integrals are
+(locally) smooth functions of the coordinates of y.
+✷
+If a is κ-smooth, and s ◦ (κ ∗ a) = 11S and b ◦ (κ ∗ a) = 11B for some S, B ⊂ RD ,
+then let
+M∞ (a)
+
+:=
+
+1
+.
+x∈∂S∪∂B |∇(κ ∗ a)(x)|
+sup
+
+29
+
+S
+
+S’
+
+S
+
+A’
+
+A
+
+S’
+
+A
+
+finger
+
+A’
+B
+
+B’
+
+B’
+
+B
+arm
+(A)
+
+(B)
+
+arm
+(D)
+
+(C)
+
+Fig. 3. (A) Theorem 4.2 (B) B′ ⊂ A′ ⊂ S′ . (C,D) RealLife is not d∗ -continuous.
+D
+
+Theorem 4.2 Suppose a ∈ 1AR is κ-smooth still life, with M∞ (a) < ∞. If
+cl (B) ⊂ int (A) and cl (A) ⊂ int (S) [Fig.3(A)], then there is some ǫ > 0, so
+D
+that for any a′ ∈ 1AR , if d∗ (a, a′ ) < ǫ then a′ is also a still life.
+Proof: Our strategy is illustrated in Figure 3(B). Suppose b◦(κ∗a′) = 11B′ . If a′
+is k•k1 -close to a, then B′ will be dH -close to B. Thus, if cl (B) ⊂ int (A), and
+if A′ is dH -close to A, then we’ll have B′ ⊂ A′ . Likewise, if s ◦ (κ ∗ a′ ) = 11S′ ,
+then S′ will be dH -close to S; hence, if cl (A) ⊂ int (S), then we’ll have
+A′ ⊂ S′ , so the conditions of Proposition 3.1 are satisfied.
+To realize this strategy, let α := κ ∗ a, and let X := {x ∈ RD ; α
+differentiable and ∇α(x) 6= 0} (an open subset of RD ). Thus ∂B ⊂ X and
+∂S ⊂ X, because M∞ < ∞.
+Now, α ∈ C 2 (X), so define the C 1 vector field V~ : X−→RD by V~ (x) :=
+1
+∇α, and let F : X × (−τ, τ )−→X be the flow induced by V~ , which is
+|∇α|2
+well-defined in a time-interval (−τ, τ ) for some τ > 0. In other words, for any
+x ∈ X, F 0 (x) = x, and for any t ∈ (−τ, τ ), ∂t F t (x) = V~ [F t (x)].
+Claim 1: For any x ∈ X, and t ∈ (−τ, τ ), α [F t (x)] = α(x) + t.
+Proof: Let γx (t) := α [F t (x)]. Thus, γx (0) = α(x). If t ∈ (−τ, τ ) and γx (t) =
+y, then
+γx′ (t)
+
+=
+
+∇α(y) • V~ (y)
+
+=
+
+R
+
+∇α(y) • ∇α(y)
+|∇α(y)|2
+
+=
+
+1.
+
+R
+
+Thus, γx (t) = γx (0)+ 0t γx′ (r)dr = γx (0)+ 0t 1dr = γx (0)+t = α(x)+t.
+✸ Claim 1
+Let M := M∞ (a), and let K := kκk∞ . Let δ := ka − a′ k1 . Assume δ <
+τ /K, so Kδ < τ .
+Claim 2: (a) dH (∂S, ∂S′ ) < MKδ + O (K 2 δ 2 ).
+(b) dH (∂B, ∂B′ ) < MKδ + O (K 2 δ 2 ).
+Proof: (a) S = α−1 [s0 , s1 ], so ∂S = C0 ⊔ C1 , where C0 := α−1 {s0 } and
+C1 := α−1 {s1 }. Likewise, if α′ = κ ∗ a′ , then ∂S′ = C′0 ⊔ C′1 , where C′i :=
+(α′ )−1 {si } for i = 1, 2.
+Now kα − α′ k∞ ≤ Kδ by Lemma 1.6(c). Thus, for any x ∈ RD , |α(x) −
+α′ (x)| < Kδ, so C′0 = (α′ )−1 {s0 } ⊂ α−1 (s0 − Kδ, s0 + Kδ). But Kδ < τ ,
+30
+
+so Claim 1 implies that
+α−1 (s0 − Kδ, s0 + Kδ)
+
+[
+
+=
+
+−Kδ<t<Kδ
+
+F t (C0 ).
+
+Thus, for any c′ ∈ C′0 , there is some c0 ∈ C0 and some t ∈ (−Kδ, Kδ) such
+that
+c′
+
+=
+
+F t (c0 )
+
+(†)
+
+c0 + tV~ (c0 ) + O(t2 ),
+
+where (†) is by Taylor’s theorem. Thus,
+|c′ − c0 | =
+≤
+
+(∗)
+
+tV~ (c0 ) + O(t2 )
+
+≤
+
+|t| · sup |V~ (c)| + O(t2 )
+c∈C0
+
+2 2
+
+MKδ + O(K δ ).
+
+(29)
+
+1
+≤ M.
+c∈C0 |∇α(c)|
+c∈C0
+Eqn.(29) means that inf |c′ −c| < MKδ + O(K 2 δ 2 ). This is true for all
+
+(∗) is because |t| < Kδ, and because sup |V~ (c)| = sup
+c∈C0
+′
+
+c ∈ C ; hence sup inf |c − c| < MKδ + O(K 2 δ 2 ). Symmetric reasoning
+′
+
+′
+
+c′ ∈C′0 c∈C0
+
+shows that sup ′inf ′ |c − c′ | < MKδ + O(K 2 δ 2 ). Hence, dH (C0 , C′0 ) <
+c∈C0 c ∈C0
+
+MKδ + O(K 2 δ 2 ).
+By applying the same reasoning to C1 := α−1 {s1 } and C′1 := (α′ )−1 {s1 },
+we can show that dH (C1 , C′1 ) < MKδ + O(K 2 δ 2 ). We conclude that
+dH (∂S, ∂S′ ) < MKδ + O (K 2 δ 2 ). The proof of (b) is similar.
+✸ Claim 2
+Now, let γ := min {dH (∂B, ∂A), dH (∂A, ∂S)} > 0. Claim 2 yields some δ >
+0 so that, if ka′ − ak1 < δ, then dH (∂B′ , ∂B) < γ/2 and dH (∂S′ , ∂S) < γ/2.
+Thus, if dH (∂A′ , ∂A) < γ/2, then B′ ⊆ A′ ⊆ S′ . So let ǫ := min{δ, γ/2}. ✷
+Remark: (a) Υ is not d∗ -continuous. To see this, consider Figure 3(C), where
+A is a hexagon with a long ‘arm’, and S is an amorphous blob which contains
+the body of the hexagon but not the arm. Thus, Υ(11A ) = 11A∩S is the hexagon
+with most of the arm cut off.
+Now consider Figure 3(D), where A′ is the same as A, but with a slightly longer
+arm, whose ‘finger’ rejoins the set S′ . Thus, Υ(11A′ ) = 11A′ ∩S′ consists of the
+main hexagon, and also a detached ‘finger’ floating by itself. The appearance
+of this finger represents a discontinuous jump in the Hausdorff metric. Thus,
+D
+a d∗ -continuous path in 1AR from A to A′ (by continuously extending the
+arm) is mapped by Υ into a d∗ -discontinuous path (where a finger suddenly
+appears). Hence Υ can’t be d∗ -continuous along this path.
+(b) If b0 = s0 , then parts of the boundaries of B, A, and S will generally
+coincide, so the hypotheses of Theorem 4.2 cannot be satisfied.
+31
+
+Conclusion
+This paper introduced the RealLife family of Euclidean automata, and established their relationship to Larger than Life CA. Many questions remain. For
+example, is the converse to Theorem 2.1(b) true? That is: does a life form
+for RealLife imply the existence of a life form for LtL CA of sufficiently large
+radius? Also, §3 and §4 gave a variety of ‘existence’ theorems for still lifes, but
+none for other life forms. Despite abundant empirical evidence, there are only
+a few rigorous existence theorems regarding oscillators and bugs for LtL CA
+[Eva01,Eva03a], and as yet none for RealLife.
+Any compactly supported persistent structure (eg. an oscillator or bug) in a
+cellular automaton must be eventually periodic, by the Pigeonhole Principle.
+However, this is no longer true in Euclidean automata. Thus, RealLife might
+possess aperiodic persistent structures, which are the limits of a sequence of
+progressively longer-period oscillators or bugs in progressively longer range
+LtL CA. Is there an ‘evolution’ theorem for such structures, analogous to
+Theorem 2.1(b)?
+Conway’s Life exhibits a complex and subtle glider-based ‘physics’, which
+makes possible the construction of glider guns, glider reflectors and gliderbased logic, yielding machines capable of universal computation and even
+self-replication [BCG04,DR99]. Evans [Eva05] has shown that at least one
+LtL CA (Bosco’s Rule) exhibits similar universal computation (but not selfreplication). Does any RealLife EA contain universal computers or self-replicators?
+
+References
+[Bay87] Carter Bays. Candidates for the Game of Life in three dimensions. Complex
+Systems, 1(3):373–400, 1987.
+[Bay88] Carter Bays. A note on the discovery of a new game of three-dimensional
+Life. Complex Systems, 2(3):255–258, 1988.
+[Bay90] Carter Bays. The discovery of a new glider for the game of threedimensional Life. Complex Systems, 4(6):599–602, 1990.
+[Bay91] Carter Bays. A new game of three-dimensional Life. Complex Systems,
+5(1):15–18, 1991.
+[Bay92] Carter Bays. A new candidate rule for the game of three-dimensional Life.
+Complex Systems, 6(5):433–441, 1992.
+[Bay94] Carter Bays. Further notes on the game of three-dimensional Life. Complex
+Systems, 8(1):67–73, 1994.
+
+32
+
+[BCG04] Elwyn R. Berlekamp, John H. Conway, and Richard K. Guy. Winning
+ways for your mathematical plays. Vol. 4, chapter 25: ‘What is Life?’. A
+K Peters Ltd., Wellesley, MA, second edition, 2004.
+[Bor95] Vivek S. Borkar. Probability Theory: An advanced course. Springer, New
+York, 1995.
+[DR99] Bruno Durand and Zsuzsanna Róka. The game of life: universality
+revisited. In Cellular automata (Saissac, 1996), volume 460 of Math. Appl.,
+pages 51–74. Kluwer Acad. Publ., Dordrecht, 1999.
+[Epp02] David Eppstein. Searching for spaceships. In More games of no chance
+(Berkeley, CA, 2000), volume 42 of Math. Sci. Res. Inst. Publ., pages
+433–453. Cambridge Univ. Press, Cambridge, 2002.
+[Eva96] Kellie Michele Evans.
+Larger than Life: It’s so nonlinear.
+PhD
+thesis, University of Wisconsin Madison, 1996. http://www.csun.edu/
+∼kme52026/ thesis.html.
+[Eva01] Kellie Michele Evans. Larger than Life: digital creatures in a family of
+two-dimensional cellular automata. In Discrete models: combinatorics,
+computation, and geometry (Paris, 2001), Discrete Math. Theor. Comput.
+Sci. Proc., AA, pages 177–191 (electronic). Maison Inform. Math. Discrèt.
+(MIMD), Paris, 2001.
+[Eva03a] Kellie Michele Evans. Larger than Life: threshold-range scaling of Life’s
+coherent structures. Phys. D, 183(1-2):45–67, 2003.
+[Eva03b] Kellie Michele Evans. Replicators and Larger-than-Life examples. In New
+constructions in cellular automata, St. Fe Inst. Stud. Sci. Complex., pages
+119–159. Oxford Univ. Press, New York, 2003.
+[Eva05] Kellie Michele Evans.
+Is Bosco’s rule universal?
+In Machines,
+computations, and universality, volume 3354 of Lecture Notes in Comput.
+Sci., pages 188–199. Springer, Berlin, 2005.
+[Fol84]
+
+Gerald B. Folland. Real Analysis. John Wiley & Sons, New York, 1984.
+
+[GG98] Janko Gravner and David Griffeath. Cellular automaton growth on Z2 :
+theorems, examples, and problems. Adv. in Appl. Math., 21(2):241–304,
+1998.
+[Got03] Nicholas M. Gotts. Self-organized construction in sparse random arrays
+of Conway’s Game of Life. In New constructions in cellular automata, St.
+Fe Inst. Stud. Sci. Complex., pages 1–53. Oxford Univ. Press, New York,
+2003.
+[Hed69] G. Hedlund. Endomorphisms and automorphisms of the shift dynamical
+systems. Mathematical System Theory, 3:320–375, 1969.
+[Str93]
+
+Daniel W. Strook. Probability theory: An analytic view. Cambridge UP,
+Cambridge, UK, 1993.
+
+33
+
+S
+A
+B
+
+
